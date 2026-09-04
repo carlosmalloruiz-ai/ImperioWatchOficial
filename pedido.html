@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datos de envío — IMPERIOWATCH</title>
+<meta name="description" content="Completa tus datos de envío para gestionar tu pedido con IMPERIOWATCH por Instagram.">
+<meta name="theme-color" content="#0a0908">
+<link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="preloader">
+  <div class="logo-intro">
+    <div class="ring-wrap"><svg viewBox="0 0 100 100"><circle class="ring-bg" cx="50" cy="50" r="46.2"/><circle class="ring-draw" cx="50" cy="50" r="46.2"/></svg><span class="mono">W</span></div>
+    <div class="word"><span>I</span><span>M</span><span>P</span><span>E</span><span>R</span><span>I</span><span>O</span><span class="sp"></span><span>W</span><span>A</span><span>T</span><span>C</span><span>H</span></div>
+  </div>
+  <img class="pl-mark" src="assets/logo.jpeg" alt="">
+</div>
+<div class="ambient-bg"></div>
+
+<header class="site">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html"><img src="assets/logo.jpeg" alt="IMPERIOWATCH">IMPERIOWATCH</a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+    <nav class="main-links">
+      <a href="index.html">Inicio</a><a href="catalogo.html" class="active">Catálogo</a><a href="sobre-nosotros.html">Sobre nosotros</a><a href="envios-devoluciones.html">Envíos y devoluciones</a><a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+<div class="ticker" aria-hidden="true"><div class="ticker-track"><span>ENVÍO 24-48H</span><span class="sep">◆</span><span>CONTRA REEMBOLSO</span><span class="sep">◆</span><span>PEDIDOS POR INSTAGRAM</span><span class="sep">◆</span><span>ENVÍO DESDE ESPAÑA</span><span class="sep">◆</span><span>ENVÍO 24-48H</span><span class="sep">◆</span><span>CONTRA REEMBOLSO</span><span class="sep">◆</span><span>PEDIDOS POR INSTAGRAM</span><span class="sep">◆</span><span>ENVÍO DESDE ESPAÑA</span><span class="sep">◆</span></div></div>
+
+<main class="order-page">
+  <div class="order-head reveal">
+    <span class="eyebrow"><span class="dot"></span>ÚLTIMO PASO</span>
+    <h1>Datos de envío</h1>
+    <p>Completa tus datos y prepararemos un mensaje con toda la información para enviarlo directamente por Instagram.</p>
+  </div>
+
+  <div class="order-layout">
+    <section class="order-card order-product reveal">
+      <span class="eyebrow">TU PEDIDO</span>
+      <div id="pedido-producto" class="order-product-info"></div>
+      <div class="cod-box"><strong>💵 Contra reembolso</strong><span>El pago se realizará al recibir el pedido.</span></div>
+    </section>
+
+    <section class="order-card reveal">
+      <form id="pedido-form" class="order-form" novalidate>
+        <div class="form-grid">
+          <label>Nombre *<input name="nombre" autocomplete="given-name" required></label>
+          <label>Apellidos *<input name="apellidos" autocomplete="family-name" required></label>
+          <label>Teléfono *<input name="telefono" type="tel" autocomplete="tel" required></label>
+          <label>Email *<input name="email" type="email" autocomplete="email" required></label>
+          <label class="full">Dirección *<input name="direccion" autocomplete="street-address" required></label>
+          <label>Número *<input name="numero" autocomplete="address-line2" required></label>
+          <label>Piso / Puerta<input name="piso" autocomplete="address-line2"></label>
+          <label>Código postal *<input name="cp" inputmode="numeric" autocomplete="postal-code" required></label>
+          <label>Localidad *<input name="localidad" autocomplete="address-level2" required></label>
+          <label>Provincia *<input name="provincia" autocomplete="address-level1" required></label>
+        </div>
+        <label class="check-line"><input type="checkbox" name="privacidad" required> <span>He revisado mis datos y acepto que se utilicen para gestionar este pedido.</span></label>
+        <p class="form-error" id="form-error" aria-live="polite"></p>
+        <button class="btn instagram-btn" type="submit">Continuar a Instagram <span>↗</span></button>
+        <a class="btn outline" href="catalogo.html">← Volver al catálogo</a>
+        <p class="form-help">Al continuar, se copiará automáticamente el mensaje del pedido para que puedas pegarlo en nuestro chat de Instagram.</p>
+      </form>
+      <div id="order-success" class="order-success" hidden>
+        <div class="success-icon">✓</div>
+        <span class="eyebrow">PEDIDO PREPARADO</span>
+        <h2>Ya casi está.</h2>
+        <p id="success-text"></p>
+        <button class="btn instagram-btn" id="open-instagram" type="button">Abrir Instagram <span>↗</span></button>
+        <button class="btn outline" id="copy-again" type="button">Copiar mensaje otra vez</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site"><div class="f-logo">IMPERIOWATCH</div><div class="f-links"><a href="index.html">Inicio</a><a href="catalogo.html">Catálogo</a><a href="sobre-nosotros.html">Sobre nosotros</a><a href="envios-devoluciones.html">Envíos y devoluciones</a><a href="contacto.html">Contacto</a><a href="https://www.instagram.com/imperiowatchesp?igsi=MTRuZHB0anQzMjlsMQ==" target="_blank" rel="noopener">Instagram</a></div><div class="copyright">© 2026 IMPERIOWATCH — Córdoba, España</div></footer>
+<script src="js/productos.js"></script>
+<script src="js/site.js"></script>
+<script src="js/pedido.js"></script>
+</body>
+</html>

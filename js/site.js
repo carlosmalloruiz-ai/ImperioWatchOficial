@@ -102,18 +102,37 @@ function renderProducto(){
           ${p.tallas.map((t,i) => `<span class="${i===0?'sel':''}">${t}</span>`).join('')}
         </div>
       </div>
-      <a class="btn outline" href="catalogo.html">← Volver al catálogo</a>
+      <div class="purchase-box">
+        <div class="purchase-note"><span class="purchase-dot"></span> Pedido gestionado por Instagram · Pago contra reembolso</div>
+        <a class="btn instagram-btn" id="btn-instagram-pedido" href="#">Comprar por Instagram <span>↗</span></a>
+        <a class="btn outline" href="catalogo.html">← Volver al catálogo</a>
+      </div>
     </div>
   `;
 
   initTiltAll();
 
+  const instagramBtn = cont.querySelector('#btn-instagram-pedido');
+  const getSelectedOption = () => cont.querySelector('.opt-pills .sel')?.textContent.trim() || p.tallas?.[0] || '';
+
+  function actualizarInstagram(){
+    if(!instagramBtn) return;
+    const opcion = getSelectedOption();
+    const params = new URLSearchParams({
+      producto: p.id,
+      opcion
+    });
+    instagramBtn.href = `pedido.html?${params.toString()}`;
+  }
+
   cont.querySelectorAll('.opt-pills span').forEach(pill => {
     pill.addEventListener('click', () => {
       pill.parentElement.querySelectorAll('span').forEach(s => s.classList.remove('sel'));
       pill.classList.add('sel');
+      actualizarInstagram();
     });
   });
+  actualizarInstagram();
 
   // JSON-LD estructurado para buscadores
   const ld = document.createElement('script');
