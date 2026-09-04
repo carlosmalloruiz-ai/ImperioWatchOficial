@@ -479,7 +479,7 @@ html{scroll-behavior:smooth;}
   animation:ambientBreathe 10s ease-in-out infinite;
 }
 @keyframes ambientBreathe{0%,100%{opacity:0.6;}50%{opacity:1;}}
-body > *:not(.ambient-bg):not(#preloader){position:relative;z-index:1;}
+body > *:not(.ambient-bg):not(#preloader):not(header.site){position:relative;z-index:1;}
 
 /* ---- Scroll reveal ---- */
 .reveal{
