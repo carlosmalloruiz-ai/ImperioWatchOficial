@@ -101,7 +101,7 @@ const PRODUCTOS = [
     id: "cartier-diamantes-negros",
     nombre: "Cartier Santos de Cartier Iced Out en Diamantes Negros",
     categoria: "Relojes",
-    precio: 49.99,
+    precio: 59.99,
     imagen: "assets/productos/CartierPerladoNegro.png",
     descripcion: "Reloj de forma cuadrada con acabado completo en pavé de diamantes/gemas en color negro tanto en la caja, el bisel y la esfera como en el brazalete metálico.",
     tallas: ["Talla única"]
@@ -200,7 +200,7 @@ const PRODUCTOS = [
     id: "ap-perlado-blanco",
     nombre: "Audemars Piguet Royal Oak Iced Out Diamantes Blancos",
     categoria: "Relojes",
-    precio: 49.99,
+    precio: 59.99,
     imagen: "assets/productos/ApPerladoBlanco.png",
     descripcion: "Reloj de tres agujas con ventana de fecha, completamente engastado en pavé de diamantes brillantes en la caja, el bisel octogonal, la esfera y el brazalete.",
     tallas: ["Talla única"]
@@ -209,7 +209,7 @@ const PRODUCTOS = [
     id: "ap-perlado-negro",
     nombre: "Audemars Piguet Royal Oak Iced Out Diamantes Negros",
     categoria: "Relojes",
-    precio: 49.99,
+    precio: 59.99,
     imagen: "assets/productos/ApPerladoNegro.png",
     descripcion: "Reloj de tres agujas con ventana de fecha, cubierto por completo en pavé de diamantes en tono negro brillante, abarcando caja, bisel, esfera y brazalete.",
     tallas: ["Talla única"]
