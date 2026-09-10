@@ -98,6 +98,15 @@ const PRODUCTOS = [
     tallas: ["Talla única"]
   },
   {
+    id: "rolex-yacht-master-esfera-azul",
+    nombre: "Rolex Yacht Master 42 en Titanio RLX Oro Blanco con Correa Oysterflex",
+    categoria: "Relojes",
+    precio: 49.99,
+    imagen: "assets/productos/RolexYachtMaster42.png",
+    descripcion: "Reloj deportivo con caja en tono plateado/titanio, bisel cerámico Cerachrom negro mate con números en relieve, esfera negra y correa de goma negra Oysterflex.",
+    tallas: ["Talla única"]
+  },
+  {
     id: "cartier-diamantes-negros",
     nombre: "Cartier Santos de Cartier Iced Out en Diamantes Negros",
     categoria: "Relojes",
@@ -111,6 +120,9 @@ const PRODUCTOS = [
     nombre: "Omega x Swatch Bioceramic MoonSwatch Mission to the Moonphase (Snoopy White)",
     categoria: "Relojes",
     precio: 49.99,
+    imagen: "assets/productos/OmegaBlanco.png",
+    imagen: "assets/productos/OmegaBlanco.png",
+    imagen: "assets/productos/OmegaBlanco.png",
     imagen: "assets/productos/OmegaBlanco.png",
     descripcion: "Reloj cronógrafo totalmente blanco fabricado en biocerámica, con correa de velcro blanca y subesfera superior derecha decorada con la ilustración del personaje Snoopy durmiendo sobre la luna.",
     tallas: ["Talla única"]
