@@ -1,15 +1,70 @@
-// Menú móvil
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('nav.main-links');
-  if(toggle && nav){
-    toggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      toggle.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', String(isOpen));
-    });
-  }
-});
+// ---------- MENÚ MÓVIL: sheet con física de muelle, interrumpible ----------
+// Sigue los principios de "Designing Fluid Interfaces" (WWDC 2018): la animación
+// nace del valor actual en pantalla (nunca del destino), puede agarrarse y
+// revertirse en cualquier instante, y respeta prefers-reduced-motion con un
+// cross-fade en vez de deslizamiento con muelle.
+(function(){
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let motionLib = null;
+  const getMotion = () => {
+    if(REDUCED) return Promise.resolve(null);
+    if(motionLib) return motionLib;
+    motionLib = import('https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm').catch(() => null);
+    return motionLib;
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('nav.main-links');
+    if(!toggle || !nav) return;
+
+    let open = false;
+    let animating = null; // controla la animación en curso para poder interrumpirla
+
+    async function setOpen(next){
+      open = next;
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+
+      if(open) nav.classList.add('open'); // visible desde ya para poder animar
+
+      const motion = await getMotion();
+
+      if(!motion){
+        // Sin muelle disponible (reduced-motion u offline): cross-fade simple, sin overshoot
+        nav.style.transition = 'opacity .18s ease';
+        nav.style.opacity = open ? '1' : '0';
+        nav.style.transform = 'none';
+        if(!open) setTimeout(() => { if(!open) nav.classList.remove('open'); }, 180);
+        return;
+      }
+
+      try {
+        const { animate } = motion;
+        // Anima siempre desde el valor de presentación actual: si el usuario
+        // vuelve a tocar el botón a mitad de la animación, no hay salto.
+        if(animating) animating.stop();
+        animating = animate(
+          nav,
+          open
+            ? { opacity: [null, 1], y: [null, '0%'] }
+            : { opacity: [null, 0], y: [null, '3%'] },
+          { type: 'spring', bounce: open ? 0.16 : 0, duration: open ? 0.5 : 0.32 }
+        );
+        if(!open) animating.finished.then(() => { if(!open) nav.classList.remove('open'); }).catch(() => {});
+      } catch(err){
+        nav.style.opacity = open ? '1' : '0';
+        if(!open) nav.classList.remove('open');
+      }
+    }
+
+    toggle.addEventListener('click', () => setOpen(!open));
+
+    // Tocar un enlace o pulsar Escape cierra la sheet igual que en iOS
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && open) setOpen(false); });
+  });
+})();
 
 function formatPrecio(n){
   return n.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' €';

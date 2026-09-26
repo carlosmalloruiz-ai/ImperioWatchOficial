@@ -1,5 +1,5 @@
 // ================================================
-// PLANTILLA DE PRODUCTOS DE EJEMPLO — IMPERIOWATCH
+// CATÁLOGO DE PRODUCTOS — IMPERIOWATCH
 // Edita, añade o elimina objetos de este array para
 // gestionar tu catálogo. Cada producto necesita:
 // id, nombre, categoria, precio, imagen, descripcion, tallas
