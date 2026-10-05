@@ -18,6 +18,22 @@
     <div><span class="cat">${producto.categoria}</span><h2>${producto.nombre}</h2><p>${opcion}</p><strong>${formatPrecio(producto.precio)}</strong></div>
   `;
 
+  // Si el producto está agotado (por ejemplo, entrando con un enlace antiguo),
+  // no se permite continuar con el pedido.
+  if(estaAgotado(producto)){
+    form.hidden = true;
+    const aviso = document.createElement('div');
+    aviso.className = 'order-agotado';
+    aviso.setAttribute('role', 'status');
+    aviso.innerHTML = `
+      <h2>Este producto está agotado</h2>
+      <p>Ahora mismo no podemos aceptar pedidos de <strong>${producto.nombre}</strong>. Mira el resto del catálogo o escríbenos por Instagram para saber cuándo volverá.</p>
+      <a class="btn instagram-btn" href="catalogo.html">Ver catálogo</a>
+    `;
+    form.parentNode.insertBefore(aviso, form);
+    return;
+  }
+
   let mensaje = '';
 
   function construirMensaje(data){

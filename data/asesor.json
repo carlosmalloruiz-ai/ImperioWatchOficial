@@ -1,0 +1,698 @@
+{
+ "generado": "2026-10-05T10:28:30.037Z",
+ "productos": [
+  {
+   "id": "rolex-batgirl",
+   "nombre": "Rlx GMT-Master II Batgirl",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexMasterIINegroAzul.png",
+   "descripcion": "Reloj de acero con esfera negra, bisel cerámico giratorio dividido en azul y negro, manecilla GMT azul y brazalete de acero estilo Jubilee.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "deportivo",
+     "elegante"
+    ],
+    "color": [
+     "plateado",
+     "azul",
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "rolex-rootbeer",
+   "nombre": "Rlx GMT-Master II Oro Rosa",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexOroRosa.png",
+   "descripcion": "Reloj con caja y brazalete de tres eslabones oyster fabricados en oro rosa. Presenta una esfera negra y bisel cerámico bicolor en negro y marrón.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "elegante",
+     "llamativo"
+    ],
+    "color": [
+     "dorado"
+    ]
+   }
+  },
+  {
+   "id": "rolex-batman",
+   "nombre": "Rlx GMT-Master II Batman",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexBatman.png",
+   "descripcion": "Reloj de acero con esfera negra, bisel cerámico bidireccional en azul y negro, manecilla de segundo huso horario azul y brazalete metálico de tres eslabones oyster.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "deportivo"
+    ],
+    "color": [
+     "plateado",
+     "azul",
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "rolex-yacht-master",
+   "nombre": "Rlx Yacht Master Oro Rosa con Correa Oysterflex",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexOroRosaCierreGoma.png",
+   "descripcion": "Reloj con caja en oro rosa, esfera negra mate con el detalle Yacht-Master en rojo, bisel cerámico negro con relieve y correa de goma negro Oysterflex.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "deportivo",
+     "elegante"
+    ],
+    "color": [
+     "dorado",
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "rolex-bruce-wayne",
+   "nombre": "Rlx GMT-Master II Bruce Wayne",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexMasterIINegroGris.png",
+   "descripcion": "Reloj de acero con esfera negra, aguja GMT verde, bisel cerámico bicolor en negro y gris, y brazalete de acero de cinco eslabones Jubilee.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "deportivo",
+     "discreto"
+    ],
+    "color": [
+     "plateado",
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "rolex-oro-efera-celeste",
+   "nombre": "Rlx Cosmograph Daytona Oro Amarillo con Esfera Azul Celeste",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexDaytonaDoradoAzulCierreGoma.png",
+   "descripcion": "Reloj cronógrafo con caja de oro amarillo, bisel cerámico negro Tachymetre, esfera azul claro con subesferas negras en contraste y correa de goma negra Oysterflex.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "elegante",
+     "llamativo"
+    ],
+    "color": [
+     "dorado",
+     "azul"
+    ]
+   }
+  },
+  {
+   "id": "rolex-daytona-amarillo-dorado",
+   "nombre": "Rlx Cosmograph Daytona Oro Amarillo / Dorado",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexDaytonaDoradoCierreGoma.png",
+   "descripcion": "Reloj cronógrafo con caja en oro amarillo, bisel cerámico negro Tachymetre, esfera en tono dorado con subesferas negras y correa de goma negra Oysterflex.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "llamativo",
+     "elegante"
+    ],
+    "color": [
+     "dorado"
+    ]
+   }
+  },
+  {
+   "id": "rolex-daytona-plata",
+   "nombre": "Rlx Cosmograph Daytona Acero Esfera Plata",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexDaytonaCierreGoma.png",
+   "descripcion": "Reloj cronógrafo con caja de acero/oro blanco, bisel cerámico negro Tachymetre, esfera en tono gris/plateado con subesferas negras y correa de goma negra Oysterflex.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "elegante",
+     "discreto",
+     "deportivo"
+    ],
+    "color": [
+     "plateado"
+    ]
+   }
+  },
+  {
+   "id": "rolex-dorado-cierre-goma",
+   "nombre": "Rlx Yacht Master Oro Amarillo con Correa Oysterflex",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexDoradoCierreGoma.png",
+   "descripcion": "Reloj deportivo con caja en oro amarillo, bisel cerámico negro mate con números en relieve, esfera negra con texto en rojo y correa de goma negra Oysterflex.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "deportivo",
+     "llamativo"
+    ],
+    "color": [
+     "dorado",
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "rolex-yacht-master-esfera-azul",
+   "nombre": "Rlx Yacht Master Acero Platino con Esfera Azul",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/Rolex.png",
+   "descripcion": "Reloj de acero con bisel metálico grabado en relieve, esfera en azul sol rayado con aguja del segundero en color rojo y correa de goma negra Oysterflex.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "elegante",
+     "deportivo"
+    ],
+    "color": [
+     "plateado",
+     "azul"
+    ]
+   }
+  },
+  {
+   "id": "rolex-yacht-master-42-titanio",
+   "nombre": "Rlx Yacht Master 42 en Titanio RLX Oro Blanco con Correa Oysterflex",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RolexYachtMaster42.png",
+   "descripcion": "Reloj deportivo con caja en tono plateado/titanio, bisel cerámico Cerachrom negro mate con números en relieve, esfera negra y correa de goma negra Oysterflex.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Rlx",
+    "estilo": [
+     "deportivo",
+     "discreto"
+    ],
+    "color": [
+     "plateado",
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "cartier-diamantes-negros",
+   "nombre": "Crtr Santos de Cartier Iced Out en Diamantes Negros",
+   "categoria": "Relojes",
+   "precio": 59.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/CartierPerladoNegro.png",
+   "descripcion": "Reloj de forma cuadrada con acabado completo en pavé de diamantes/gemas en color negro tanto en la caja, el bisel y la esfera como en el brazalete metálico.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Crtr",
+    "estilo": [
+     "llamativo"
+    ],
+    "color": [
+     "negro"
+    ],
+    "diamantes": true
+   }
+  },
+  {
+   "id": "cartier-santos-negro",
+   "nombre": "Crtr Santos de Cartier Negro con Esfera Negra",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/CartierSantosNegro.png",
+   "descripcion": "Reloj automático con caja y brazalete de acero en acabado negro mate, esfera negra con números romanos, indicador de fecha a las seis y corona con cabujón.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Crtr",
+    "estilo": [
+     "elegante",
+     "discreto"
+    ],
+    "color": [
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "cartier-santos-azul",
+   "nombre": "Crtr Santos de Cartier Acero con Esfera Azul Degradada",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/CartierSantosAzul.png",
+   "descripcion": "Reloj de acero con caja cuadrada, esfera azul degradada con números romanos, ventana de fecha, brazalete de acero con tornillos vistos y corona con cabujón azul.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Crtr",
+    "estilo": [
+     "elegante"
+    ],
+    "color": [
+     "plateado",
+     "azul"
+    ]
+   }
+  },
+  {
+   "id": "cartier-santos-blanco",
+   "nombre": "Crtr Santos de Cartier Acero con Esfera Blanca",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/CartierSantosBlanco.png",
+   "descripcion": "Reloj automático de acero con bisel satinado, esfera blanca plateada con números romanos negros, ventana de fecha, brazalete de acero con tornillos vistos y corona con cabujón azul.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Crtr",
+    "estilo": [
+     "elegante",
+     "discreto"
+    ],
+    "color": [
+     "plateado",
+     "blanco"
+    ]
+   }
+  },
+  {
+   "id": "omega-snoopy",
+   "nombre": "Om x Sw Bioceramic MoonSwatch Mission to the Moonphase (Snoopy White)",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/OmegaBlanco.png",
+   "descripcion": "Reloj cronógrafo totalmente blanco fabricado en biocerámica, con correa de velcro blanca y subesfera superior derecha decorada con la ilustración del personaje Snoopy durmiendo sobre la luna.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "Om x Sw",
+    "estilo": [
+     "deportivo",
+     "llamativo"
+    ],
+    "color": [
+     "blanco",
+     "colorido"
+    ]
+   }
+  },
+  {
+   "id": "richard-mille-rafael-nadal",
+   "nombre": "RM 35-02 Rafael Nadal Carbono NTPT con Correa Azul",
+   "categoria": "Relojes",
+   "precio": 59.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RichardGomaAzul.png",
+   "descripcion": "Reloj de acero con esfera negra, bisel cerámico giratorio dividido en azul y negro, manecilla GMT azul y brazalete de acero estilo Jubilee.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "RM",
+    "estilo": [
+     "deportivo",
+     "llamativo"
+    ],
+    "color": [
+     "azul",
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "richard-mille-rafael-nadal-blanco",
+   "nombre": "RM 35-02 Rafael Nadal Cerámica Blanca con Correa Blanca",
+   "categoria": "Relojes",
+   "precio": 59.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RichardGomaBlanca.png",
+   "descripcion": "Reloj deportivo con caja de cerámica blanca, bisel interior azul claro, mecanismo totalmente esqueletizado visible y correa de goma blanca.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "RM",
+    "estilo": [
+     "deportivo",
+     "llamativo"
+    ],
+    "color": [
+     "blanco"
+    ]
+   }
+  },
+  {
+   "id": "richard-mille-rafael-nadal-negro",
+   "nombre": "RM 35-02 Rafael Nadal Carbono NTPT con Correa Negra",
+   "categoria": "Relojes",
+   "precio": 59.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RichardGomaNegra.png",
+   "descripcion": "Reloj de alta gama con caja de carbono NTPT veteada en tono negro/móvil, realce interior en azul cyan, movimiento automático esqueletizado y correa de goma negra.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "RM",
+    "estilo": [
+     "deportivo",
+     "discreto"
+    ],
+    "color": [
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "richard-mille-rm-53-01-azul",
+   "nombre": "RM 53-01 Tourbillon Pablo Mac Donough Zafiro con Correa Azul",
+   "categoria": "Relojes",
+   "precio": 59.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RichardTrasparenteGomaAzul.png",
+   "descripcion": "Reloj con caja transparente elaborada en cristal de zafiro, mecanismo tourbillon suspendido mediante cables de acero y correa de goma azul claro.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "RM",
+    "estilo": [
+     "llamativo",
+     "deportivo"
+    ],
+    "color": [
+     "azul"
+    ]
+   }
+  },
+  {
+   "id": "richard-mille-rm-53-01-negro",
+   "nombre": "RM 53-01 Tourbillon Pablo Mac Donough Zafiro con Correa Negra",
+   "categoria": "Relojes",
+   "precio": 59.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RichardTrasparenteGomaNegra.png",
+   "descripcion": "Reloj con caja totalmente transparente de cristal de zafiro, estructura interna esqueletizada con puentes y cables metálicos, y correa de goma negra.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "RM",
+    "estilo": [
+     "llamativo"
+    ],
+    "color": [
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "richard-mille-rm-11-03-amarillo",
+   "nombre": "RM 11-03 Flyback Cerámica Blanca con Correa Amarilla",
+   "categoria": "Relojes",
+   "precio": 59.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/RichardBlancoAmarillo.png",
+   "descripcion": "Reloj cronógrafo con caja tonneau en cerámica blanca, esfera esqueleto con detalles amarillos, indicador de fecha grande, pulsadores blancos y correa de goma amarilla.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "RM",
+    "estilo": [
+     "llamativo",
+     "deportivo"
+    ],
+    "color": [
+     "blanco",
+     "colorido"
+    ]
+   }
+  },
+  {
+   "id": "ap-dorado",
+   "nombre": "AP Royal Oak Cronógrafo Oro Amarillo",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/ApDorado.png",
+   "descripcion": "Reloj cronógrafo con caja y brazalete integrado en oro amarillo, bisel octogonal con tornillos expuestos y esfera monogramada con patrón Grande Tapisserie en tono dorado con subesferas a juego.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "AP",
+    "estilo": [
+     "elegante",
+     "llamativo"
+    ],
+    "color": [
+     "dorado"
+    ]
+   }
+  },
+  {
+   "id": "ap-negro",
+   "nombre": "AP Royal Oak Cronógrafo Cerámica Negra",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/ApFullBlack.png",
+   "descripcion": "Reloj cronógrafo fabricado integramente en cerámica negra mate cepillada, con esfera negra Grande Tapisserie, detalles y agujas en oro rosa, y brazalete de cerámica negra.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "AP",
+    "estilo": [
+     "elegante",
+     "discreto"
+    ],
+    "color": [
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "ap-oro-rosa",
+   "nombre": "AP Royal Oak Cronógrafo Oro Rosa",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/ApOroRosa.png",
+   "descripcion": "Reloj cronógrafo con caja y brazalete en oro rosa, bisel octogonal característico y esfera Grande Tapisserie en tono marrón rosa con subesferas a juego.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "AP",
+    "estilo": [
+     "elegante"
+    ],
+    "color": [
+     "dorado"
+    ]
+   }
+  },
+  {
+   "id": "ap-plata-celeste",
+   "nombre": "AP Royal Oak Cronógrafo Acero con Esfera Azul Celeste",
+   "categoria": "Relojes",
+   "precio": 49.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/ApPlateadoEferaCeleste.png",
+   "descripcion": "Reloj cronógrafo con caja y brazalete integrado de acero inoxidable, bisel octogonal cepillado y esfera Grande Tapisserie en tono azul celeste.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "AP",
+    "estilo": [
+     "elegante",
+     "discreto"
+    ],
+    "color": [
+     "plateado",
+     "azul"
+    ]
+   }
+  },
+  {
+   "id": "ap-perlado-blanco",
+   "nombre": "AP Royal Oak Iced Out Diamantes Blancos",
+   "categoria": "Relojes",
+   "precio": 59.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/ApPerladoBlanco.png",
+   "descripcion": "Reloj de tres agujas con ventana de fecha, completamente engastado en pavé de diamantes brillantes en la caja, el bisel octogonal, la esfera y el brazalete.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "AP",
+    "estilo": [
+     "llamativo"
+    ],
+    "color": [
+     "plateado",
+     "blanco"
+    ],
+    "diamantes": true
+   }
+  },
+  {
+   "id": "ap-perlado-negro",
+   "nombre": "AP Royal Oak Iced Out Diamantes Negros",
+   "categoria": "Relojes",
+   "precio": 59.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/ApPerladoNegro.png",
+   "descripcion": "Reloj de tres agujas con ventana de fecha, cubierto por completo en pavé de diamantes en tono negro brillante, abarcando caja, bisel, esfera y brazalete.",
+   "tags": {
+    "tipo": "reloj",
+    "marca": "AP",
+    "estilo": [
+     "llamativo"
+    ],
+    "color": [
+     "negro"
+    ],
+    "diamantes": true
+   }
+  },
+  {
+   "id": "pack-lv-dorado",
+   "nombre": "Pack cinturon y cartera LV Dorado",
+   "categoria": "Cinturones",
+   "precio": 44.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/lvdorado.jpeg",
+   "descripcion": "Conjunto compuesto por cinturón con hebilla en acabado dorado, y billetera a juego. Incluye bolsa de compra y caja original de la marca.",
+   "tags": {
+    "tipo": "pack",
+    "marca": "LV",
+    "estilo": [
+     "elegante",
+     "llamativo"
+    ],
+    "color": [
+     "dorado"
+    ]
+   }
+  },
+  {
+   "id": "pack-lv-plata",
+   "nombre": "Pack cinturon y cartera LV Plata",
+   "categoria": "Cinturones",
+   "precio": 44.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/lvplata.jpeg",
+   "descripcion": "Conjunto compuesto por cinturón en lona Monogram con hebilla en acabado plateado, y billetera a juego. Incluye bolsa de compra y caja original de la marca.",
+   "tags": {
+    "tipo": "pack",
+    "marca": "LV",
+    "estilo": [
+     "elegante"
+    ],
+    "color": [
+     "plateado"
+    ]
+   }
+  },
+  {
+   "id": "pack-hermes-dorado",
+   "nombre": "Pack cinturon y cartera Hrms Dorado",
+   "categoria": "Cinturones",
+   "precio": 44.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/hermesdorado.jpeg",
+   "descripcion": "Conjunto compuesto por cinturón de piel negra con hebilla en acabado dorado, y billetera a juego con detalle metálico. Incluye bolsa de compra y caja original de la marca.",
+   "tags": {
+    "tipo": "pack",
+    "marca": "Hrms",
+    "estilo": [
+     "elegante",
+     "llamativo"
+    ],
+    "color": [
+     "dorado"
+    ]
+   }
+  },
+  {
+   "id": "pack-hermes-plata",
+   "nombre": "Pack cinturon y cartera Hrms Plata",
+   "categoria": "Cinturones",
+   "precio": 44.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/hermesplata.jpeg",
+   "descripcion": "Conjunto compuesto por cinturón de piel negra con hebilla en acabado plateado, y billetera a juego con detalle metálico. Incluye bolsa de compra y caja original de la marca.",
+   "tags": {
+    "tipo": "pack",
+    "marca": "Hrms",
+    "estilo": [
+     "elegante"
+    ],
+    "color": [
+     "plateado"
+    ]
+   }
+  },
+  {
+   "id": "pack-gucci-negro",
+   "nombre": "Pack cinturon y cartera GC Negro",
+   "categoria": "Cinturones",
+   "precio": 44.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/guccinegro.jpeg",
+   "descripcion": "Conjunto compuesto por cinturón en tono gris con hebilla en acabado negro mate, y billetera a juego. Incluye bolsa de compra y caja original de la marca.",
+   "tags": {
+    "tipo": "pack",
+    "marca": "GC",
+    "estilo": [
+     "elegante",
+     "discreto"
+    ],
+    "color": [
+     "negro"
+    ]
+   }
+  },
+  {
+   "id": "pack-gucci-verde-negro",
+   "nombre": "Pack cinturon y cartera GC Verde y Negro",
+   "categoria": "Cinturones",
+   "precio": 44.99,
+   "estado": "disponible",
+   "imagen": "assets/productos/gucciverdenegro.jpeg",
+   "descripcion": "Conjunto compuesto por cinturón en piel negra con detalle tricolor en la hebilla, y billetera a juego con franja verde y roja. Incluye bolsa de compra y caja original de la marca.",
+   "tags": {
+    "tipo": "pack",
+    "marca": "GC",
+    "estilo": [
+     "elegante",
+     "llamativo"
+    ],
+    "color": [
+     "negro",
+     "verde"
+    ]
+   }
+  }
+ ]
+}

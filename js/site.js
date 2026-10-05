@@ -71,10 +71,14 @@ function formatPrecio(n){
 }
 
 function cardTemplate(p){
+  const agotado = estaAgotado(p);
   return `
-    <div class="card" data-tilt>
-      <a class="thumb-link" href="producto.html?id=${p.id}">
-        <div class="thumb"><img src="${p.imagen}" alt="${p.nombre}" loading="lazy"></div>
+    <div class="card${agotado ? ' agotado' : ''}" data-tilt>
+      <a class="thumb-link" href="producto.html?id=${p.id}" aria-label="${p.nombre}${agotado ? ' (agotado)' : ''}">
+        <div class="thumb">
+          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy">
+          ${agotado ? '<span class="estado-badge">Agotado</span>' : ''}
+        </div>
       </a>
       <div class="info">
         <span class="cat">${p.categoria}</span>
@@ -142,6 +146,7 @@ function renderProducto(){
   const p = getProducto(id) || PRODUCTOS[0];
 
   document.title = p.nombre + ' — IMPERIOWATCH';
+  const agotado = estaAgotado(p);
 
   cont.innerHTML = `
     <div class="gallery-main" data-tilt><img src="${p.imagen}" alt="${p.nombre}"></div>
@@ -149,7 +154,7 @@ function renderProducto(){
       <a class="crumb" href="catalogo.html">Catálogo</a>
       <span class="cat">${p.categoria}</span>
       <h1>${p.nombre}</h1>
-      <div class="price">${formatPrecio(p.precio)}</div>
+      <div class="price">${formatPrecio(p.precio)}${agotado ? ' <span class="estado-badge inline">Agotado</span>' : ''}</div>
       <p class="desc">${p.descripcion}</p>
       <div class="opt-row">
         <label>Opción</label>
@@ -158,8 +163,13 @@ function renderProducto(){
         </div>
       </div>
       <div class="purchase-box">
-        <div class="purchase-note"><span class="purchase-dot"></span> Pedido gestionado por Instagram · Pago contra reembolso</div>
-        <a class="btn instagram-btn" id="btn-instagram-pedido" href="#">Comprar por Instagram <span>↗</span></a>
+        ${agotado ? `
+          <div class="purchase-note agotado"><span class="purchase-dot"></span> Este producto está agotado por ahora</div>
+          <button class="btn instagram-btn" type="button" disabled aria-disabled="true">Agotado</button>
+        ` : `
+          <div class="purchase-note"><span class="purchase-dot"></span> Pedido gestionado por Instagram · Pago contra reembolso</div>
+          <a class="btn instagram-btn" id="btn-instagram-pedido" href="#">Comprar por Instagram <span>↗</span></a>
+        `}
         <a class="btn outline" href="catalogo.html">← Volver al catálogo</a>
       </div>
     </div>
@@ -202,7 +212,7 @@ function renderProducto(){
       "@type": "Offer",
       "priceCurrency": "EUR",
       "price": p.precio,
-      "availability": "https://schema.org/InStock"
+      "availability": agotado ? "https://schema.org/OutOfStock" : "https://schema.org/InStock"
     }
   });
   document.head.appendChild(ld);
