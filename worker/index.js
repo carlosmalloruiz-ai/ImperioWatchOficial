@@ -167,7 +167,7 @@ function esErrorDeCuota(e) {
 
 async function llamarIA(env, modelo, mensajes) {
   const r = await env.AI.run(modelo, {
-    messages,
+    messages: mensajes,
     max_tokens: MAX_TOKENS_OUT,
     temperature: 0.5,
   });
@@ -258,10 +258,14 @@ export default {
     try {
       bruto = await llamarIA(env, MODELO, conversacion);
     } catch (e) {
+      console.error("Error en modelo principal:", e);
+
       if (esErrorDeCuota(e)) return responder(fallback("cuota"), eco);
+
       try {
         bruto = await llamarIA(env, MODELO_RESPALDO, conversacion);
       } catch (e2) {
+        console.error("Error en modelo de respaldo:", e2);
         return responder(fallback(esErrorDeCuota(e2) ? "cuota" : "ia"), eco);
       }
     }
