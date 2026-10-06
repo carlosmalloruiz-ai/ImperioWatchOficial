@@ -40,7 +40,8 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scrollbar-color:var(--bronze) var(--void); scrollbar-width:thin; scroll-behavior:smooth;}
+html{scrollbar-color:var(--bronze) var(--void); scrollbar-width:thin; scroll-behavior:smooth;
+  -webkit-tap-highlight-color:transparent; -webkit-text-size-adjust:100%;}
 
 body{
   background:var(--void);
@@ -49,6 +50,9 @@ body{
   font-weight:300;
   font-size:15px;
   min-height:100vh;
+  min-height:100dvh;
+  padding-left:env(safe-area-inset-left, 0px);
+  padding-right:env(safe-area-inset-right, 0px);
   overflow-x:hidden;
 }
 
@@ -144,8 +148,9 @@ body > *:not(.ambient-bg):not(.grain):not(#preloader):not(header.site){position:
 
 body.page-leaving{animation:pageLeave .3s var(--ease-in-out) forwards;}
 @keyframes pageLeave{to{opacity:0;transform:translateY(-6px);}}
-body{animation:pageEnter .5s var(--ease-out) both;}
-@keyframes pageEnter{from{opacity:0;transform:translateY(10px) scale(.99);}to{opacity:1;transform:translateY(0) scale(1);}}
+/* backwards, no both: con forwards el body se queda con un transform animado y pasa a ser el bloque contenedor de los position:fixed (menú, asesor) */
+body{animation:pageEnter .5s var(--ease-out) backwards;}
+@keyframes pageEnter{from{opacity:0;transform:translateY(10px) scale(.99);}to{opacity:1;transform:none;}}
 
 /* ================================================
    HEADER — nav flotante tipo isla de cristal
@@ -173,7 +178,9 @@ header.site{
 }
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:-0.01em;color:var(--bone);}
 .brand img{width:32px;height:32px;border-radius:9px;transition:transform .6s var(--ease-spring);}
-.brand:hover img{transform:rotate(8deg) scale(1.08);}
+@media (hover:hover) and (pointer:fine){
+  .brand:hover img{transform:rotate(8deg) scale(1.08);}
+}
 
 nav.main-links{display:flex;gap:6px;background:rgba(255,255,255,0.02);border-radius:999px;padding:4px;}
 nav.main-links a{
@@ -192,7 +199,10 @@ nav.main-links a::before{
 @media (hover:hover) and (pointer:fine){
   nav.main-links a:hover::before{opacity:1;transform:scale(1);}
 }
-nav.main-links a:hover, nav.main-links a.active{color:var(--gold-bright);}
+nav.main-links a.active{color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  nav.main-links a:hover{color:var(--gold-bright);}
+}
 nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198,161,91,0.16);}
 
 .nav-toggle{
@@ -200,7 +210,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
   width:38px;height:38px;padding:0;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;
   transition:border-color .3s ease, background .3s ease;
 }
-.nav-toggle:hover{border-color:var(--gold);background:rgba(198,161,91,0.08);}
+@media (hover:hover) and (pointer:fine){
+  .nav-toggle:hover{border-color:var(--gold);background:rgba(198,161,91,0.08);}
+}
 .nav-toggle .bar{width:16px;height:1.5px;background:var(--gold);transition:transform .4s var(--ease-spring), opacity .2s ease;}
 .nav-toggle.open .bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
 .nav-toggle.open .bar:nth-child(2){opacity:0;}
@@ -285,7 +297,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
   background:linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
   transform:skewX(-18deg);transition:left .65s ease;
 }
-.btn:hover::before{left:130%;}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover::before{left:130%;}
+}
 @media (hover:hover) and (pointer:fine){
   .btn:hover{background:var(--gold-bright);transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(198,161,91,0.5);}
 }
@@ -301,7 +315,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px;}
 .section-head h2{font-size:26px;}
 .section-head .see-all{font-size:12.5px;font-weight:500;color:var(--gold);border-bottom:1px solid transparent;transition:border-color .25s ease, color .25s ease;white-space:nowrap;}
-.section-head .see-all:hover{border-color:var(--gold);color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  .section-head .see-all:hover{border-color:var(--gold);color:var(--gold-bright);}
+}
 @media (max-width:480px){.section-head{flex-direction:column;align-items:flex-start;gap:6px;}}
 
 .filters{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:48px;}
@@ -372,7 +388,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 .card .cat{font-size:10px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;}
 .card h3{font-size:16.5px;font-weight:600;line-height:1.3;}
 .card h3 a{transition:color .3s ease;}
-.card:hover h3 a{color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  .card:hover h3 a{color:var(--gold-bright);}
+}
 .card .price{margin-top:auto;padding-top:10px;font-size:14.5px;color:var(--gold-bright);font-weight:500;}
 
 /* ================================================
@@ -406,7 +424,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 
 .product-view .details > *{opacity:0;transform:translateY(16px);animation:fadeUpMotion .7s var(--ease-out) forwards;}
 .product-view .details .crumb{display:inline-block;font-family:var(--font-display);font-size:13px;font-weight:500;color:var(--bone-dim);margin-bottom:16px;transition:color .25s;animation-delay:.06s;}
-.product-view .details .crumb:hover{color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  .product-view .details .crumb:hover{color:var(--gold-bright);}
+}
 .product-view .details .cat{font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:0;color:var(--gold);animation-delay:.14s;}
 .product-view .details h1{font-size:clamp(28px,3.4vw,38px);margin-top:12px;font-weight:700;animation-delay:.22s;}
 .product-view .details .price{font-family:var(--font-display);font-size:26px;font-weight:600;letter-spacing:-0.012em;font-variant-numeric:tabular-nums;color:var(--gold-bright);margin:20px 0;animation-delay:.3s;}
@@ -418,9 +438,11 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
   border:1px solid var(--glass-border);border-radius:999px;padding:9px 18px;font-family:var(--font-body);font-size:13.5px;font-weight:500;
   cursor:pointer;transition:all .25s var(--ease-out);
 }
-.opt-pills span:hover, .opt-pills span.sel{border-color:var(--gold);color:var(--gold-bright);background:rgba(198,161,91,0.08);}
+.opt-pills span.sel{border-color:var(--gold);color:var(--gold-bright);background:rgba(198,161,91,0.08);}
 .opt-pills span:active{transform:scale(.94);transition:transform 100ms ease-out;}
-@media (hover:hover) and (pointer:fine){.opt-pills span:hover{transform:translateY(-2px);}}
+@media (hover:hover) and (pointer:fine){
+  .opt-pills span:hover{border-color:var(--gold);color:var(--gold-bright);background:rgba(198,161,91,0.08);transform:translateY(-2px);}
+}
 .product-view .details .purchase-box{animation-delay:.54s;}
 @media (max-width:760px){.product-view{grid-template-columns:1fr;gap:36px;}}
 
@@ -482,7 +504,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
   font-size:12.5px;font-weight:500;color:var(--bone-dim);border:1px solid var(--glass-border);
   border-radius:999px;padding:10px 22px;transition:all .25s ease;
 }
-.contact-links a:hover{border-color:var(--gold);color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  .contact-links a:hover{border-color:var(--gold);color:var(--gold-bright);}
+}
 
 /* ================================================
    FAQ
@@ -513,7 +537,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 .purchase-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(198,161,91,.45);}
 .instagram-btn{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--gold);color:#0b0907;border-color:var(--gold);font-weight:700;}
 .instagram-btn span{font-size:16px;line-height:1;}
-.instagram-btn:hover{color:#0b0907;}
+@media (hover:hover) and (pointer:fine){
+  .instagram-btn:hover{color:#0b0907;}
+}
 
 .order-page{max-width:1180px;margin:0 auto;padding:30px 28px 100px;}
 .order-head{max-width:760px;margin-bottom:48px;}
@@ -566,8 +592,10 @@ footer.site .f-logo{font-family:var(--font-display);font-weight:700;font-size:18
 footer.site .f-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;}
 footer.site .f-links a{position:relative;font-size:11px;letter-spacing:0.08em;color:var(--bone-dim);transition:color .25s;}
 footer.site .f-links a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--gold-bright);transition:width .3s ease;}
-footer.site .f-links a:hover{color:var(--gold-bright);}
-footer.site .f-links a:hover::after{width:100%;}
+@media (hover:hover) and (pointer:fine){
+  footer.site .f-links a:hover{color:var(--gold-bright);}
+  footer.site .f-links a:hover::after{width:100%;}
+}
 footer.site .copyright{font-size:10px;letter-spacing:0.06em;color:var(--bone-dim);opacity:0.55;}
 
 /* ================================================
@@ -766,7 +794,7 @@ footer.site .copyright{
 #asesor-root > *{pointer-events:auto;}
 
 .asesor-fab{
-  position:absolute;right:20px;bottom:calc(20px + env(safe-area-inset-bottom, 0px));
+  position:fixed;right:12px;top:88px;bottom:auto;
   display:inline-flex;align-items:center;gap:9px;
   padding:13px 20px 13px 16px;border-radius:999px;
   background:rgba(18,16,14,.82);
@@ -792,8 +820,8 @@ footer.site .copyright{
 }
 
 .asesor-panel{
-  position:absolute;right:20px;bottom:calc(84px + env(safe-area-inset-bottom, 0px));
-  width:min(390px, calc(100vw - 32px));height:min(620px, calc(100dvh - 120px));
+  position:fixed;right:12px;top:146px;bottom:auto;
+  width:min(390px, calc(100vw - 32px));height:min(620px, calc(100dvh - 166px));
   display:flex;flex-direction:column;overflow:hidden;
   border-radius:20px;background:rgba(14,12,10,.94);
   -webkit-backdrop-filter:blur(22px) saturate(1.3);backdrop-filter:blur(22px) saturate(1.3);
@@ -896,20 +924,67 @@ footer.site .copyright{
 .asesor-aviso{margin:0;padding:0 16px 14px;font-size:12.5px;line-height:1.5;color:var(--bone-dim);}
 .asesor-aviso a{color:var(--gold-bright);text-decoration:underline;text-underline-offset:2px;}
 
-@keyframes asesorEntra{from{opacity:0;transform:translateY(12px) scale(.98);}to{opacity:1;transform:none;}}
+@keyframes asesorEntra{from{opacity:0;transform:translateY(-8px) scale(.98);}to{opacity:1;transform:none;}}
+@keyframes asesorEntraMovil{from{opacity:0;transform:translateY(12px) scale(.98);}to{opacity:1;transform:none;}}
 @keyframes asesorMsg{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
 @keyframes asesorPunto{0%,80%,100%{opacity:.3;transform:translateY(0);}40%{opacity:1;transform:translateY(-3px);}}
 
+@media (max-width:860px){
+  .asesor-fab{right:12px;top:72px;}
+  .asesor-panel{right:12px;top:130px;height:min(620px, calc(100dvh - 146px));}
+}
 @media (max-width:640px){
-  .asesor-fab{right:14px;bottom:calc(14px + env(safe-area-inset-bottom, 0px));}
   .asesor.abierto .asesor-fab{display:none;}
   .asesor-panel{
-    left:0;right:0;bottom:0;width:100%;height:min(86dvh, 680px);
+    left:0;right:0;top:auto;bottom:0;transform:none;width:100%;height:min(86dvh, 680px);
     border-radius:20px 20px 0 0;border-bottom:0;
     padding-bottom:env(safe-area-inset-bottom, 0px);
+    animation:asesorEntraMovil .32s var(--ease-out);
   }
 }
 @media (prefers-reduced-motion:reduce){
   .asesor-panel, .asesor-fila.nuevo, .asesor-burbuja.escribiendo i{animation:none;}
   .asesor-fab, .asesor-chip, .asesor-card, .asesor-icono{transition:none;}
 }
+
+/* ==================================================================
+   MÓVIL NATIVO — capa de plataforma (viewport, táctil, safe areas)
+   ================================================================== */
+
+/* Menú móvil: backdrop-filter en .nav-wrap lo convertía en el bloque contenedor del
+   nav position:fixed, así que el menú medía lo mismo que la barra (58px) en vez de
+   ocupar la pantalla, y además tapaba el botón de cerrar. En móvil la barra es
+   casi opaca, así que se quita el blur ahí y el overlay vuelve a ser de pantalla completa. */
+@media (max-width:860px){
+  .nav-wrap{
+    background:rgba(15,13,11,0.94);
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+    padding-top:calc(10px + env(safe-area-inset-top, 0px));
+  }
+  .brand, .nav-toggle{position:relative;z-index:41;} /* por encima del overlay abierto */
+  html:has(nav.main-links.open){overflow:hidden;}     /* el fondo no se desplaza con el menú abierto */
+  body:has(nav.main-links.open) #asesor-root{display:none;}
+}
+
+/* Tap sin retardo en todo lo pulsable */
+button, a, [role="button"], label, .opt-pills span{touch-action:manipulation;}
+
+/* El texto de un control no se selecciona con pulsación larga (el contenido sí) */
+button, .btn, .opt-pills span, nav.main-links a, .contact-links a{
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+}
+
+/* iOS hace zoom si un input tiene menos de 16px: se arregla el tamaño, no el zoom */
+@media (pointer:coarse){
+  .contact-wrap input, .contact-wrap textarea, .order-form input:not([type="checkbox"]){font-size:16px;}
+}
+
+/* Feedback al pulsar (sustituye al :hover en táctil) */
+.nav-toggle{transition:border-color .3s ease, background .3s ease, transform 100ms ease-out;}
+.nav-toggle:active{transform:scale(.92);}
+nav.main-links a:active, .faq-q:active, .section-head .see-all:active{color:var(--gold-bright);}
+.contact-links a:active{border-color:var(--gold);color:var(--gold-bright);}
+
+/* Safe areas */
+footer.site{padding-bottom:calc(30px + env(safe-area-inset-bottom, 0px));}
+.asesor-fab{right:calc(12px + env(safe-area-inset-right, 0px));}

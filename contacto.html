@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
     <title>Contacto — IMPERIOWATCH</title>
     <meta
       name="description"
@@ -99,8 +99,8 @@
           this.querySelector('button').textContent = 'Mensaje enviado ✓';
         "
       >
-        <input type="text" placeholder="Tu nombre" required />
-        <input type="email" placeholder="Tu email" required />
+        <input type="text" placeholder="Tu nombre" autocomplete="name" required />
+        <input type="email" placeholder="Tu email" autocomplete="email" required />
         <textarea
           rows="5"
           placeholder="Escribe tu mensaje..."

@@ -234,11 +234,18 @@ function renderProducto(){
 })();
 
 // ---------- PAGE TRANSITIONS ----------
+// Al volver atrás, iOS/Android restauran la página desde la caché de navegación con
+// la clase page-leaving aún puesta (opacity 0): pantalla en negro. Se limpia al mostrarla.
+window.addEventListener('pageshow', () => document.body.classList.remove('page-leaving'));
+
 document.addEventListener('DOMContentLoaded', () => {
+  // En táctil se navega al instante: el fade de salida de 300ms se nota como lag, no como estilo.
+  const SIN_FADE = window.matchMedia('(hover: none)').matches;
   document.querySelectorAll('a[href]').forEach(a => {
     const href = a.getAttribute('href');
     if(!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || a.target === '_blank') return;
     a.addEventListener('click', (e) => {
+      if(SIN_FADE) return;
       e.preventDefault();
       document.body.classList.add('page-leaving');
       setTimeout(() => { window.location.href = href; }, 300);
