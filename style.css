@@ -40,7 +40,8 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scrollbar-color:var(--bronze) var(--void); scrollbar-width:thin; scroll-behavior:smooth;}
+html{scrollbar-color:var(--bronze) var(--void); scrollbar-width:thin; scroll-behavior:smooth;
+  -webkit-tap-highlight-color:transparent; -webkit-text-size-adjust:100%;}
 
 body{
   background:var(--void);
@@ -49,6 +50,9 @@ body{
   font-weight:300;
   font-size:15px;
   min-height:100vh;
+  min-height:100dvh;
+  padding-left:env(safe-area-inset-left, 0px);
+  padding-right:env(safe-area-inset-right, 0px);
   overflow-x:hidden;
 }
 
@@ -119,22 +123,87 @@ body > *:not(.ambient-bg):not(.grain):not(#preloader):not(header.site){position:
 @keyframes plIn{to{opacity:1;transform:scale(1);}}
 @keyframes plPulse{0%,100%{filter:drop-shadow(0 0 6px rgba(198,161,91,0.25));}50%{filter:drop-shadow(0 0 22px rgba(198,161,91,0.55));}}
 
-.logo-intro{display:flex;flex-direction:column;align-items:center;gap:24px;}
-.logo-intro .ring-wrap{position:relative;width:108px;height:108px;display:flex;align-items:center;justify-content:center;}
+.logo-intro{position:relative;display:flex;align-items:center;justify-content:center;}
+
+/* 1 · Bisel: el anillo se dibuja y estalla hacia fuera como una onda */
+.logo-intro .ring-wrap{
+  position:absolute;left:50%;top:50%;width:108px;height:108px;margin:-54px 0 0 -54px;
+  display:flex;align-items:center;justify-content:center;pointer-events:none;
+  animation:ringBurst .9s var(--ease-out) 1s forwards;
+}
 .logo-intro svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
 .logo-intro .ring-bg{fill:none;stroke:var(--hairline);stroke-width:1;}
 .logo-intro .ring-draw{
   fill:none;stroke:var(--gold);stroke-width:1;stroke-linecap:round;
   stroke-dasharray:290;stroke-dashoffset:290;transform-origin:50% 50%;transform:rotate(-90deg);
-  animation:ringDraw 1.3s var(--ease-in-out) .15s forwards;
+  animation:ringDraw .9s var(--ease-in-out) .1s forwards;
   filter:drop-shadow(0 0 6px rgba(198,161,91,0.5));
 }
+.logo-intro .mono{display:none;} /* fuera la W */
 @keyframes ringDraw{to{stroke-dashoffset:0;}}
-.logo-intro .mono{font-family:var(--font-display);font-weight:700;font-size:32px;color:var(--gold-bright);opacity:0;letter-spacing:-0.02em;animation:monoIn .7s var(--ease-out) .9s forwards;}
-@keyframes monoIn{from{opacity:0;transform:scale(.6);}to{opacity:1;transform:scale(1);}}
-.logo-intro .word{display:flex;font-family:var(--font-display);font-weight:500;font-size:14px;letter-spacing:0.32em;color:var(--bone-dim);text-transform:uppercase;}
-.logo-intro .word span{opacity:0;transform:translateY(10px);animation:letterIn .5s ease forwards;}
-.logo-intro .word span.sp{width:8px;}
+@keyframes ringBurst{from{opacity:1;transform:scale(1);}to{opacity:0;transform:scale(2.8);}}
+
+/* 2 · Luz ambiente que se enciende detrás del nombre */
+#preloader.full-intro::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 18% at 50% 50%,rgba(198,161,91,.16),transparent 70%);
+  opacity:0;animation:plGlow 1.4s var(--ease-out) .9s forwards;
+}
+@keyframes plGlow{to{opacity:1;}}
+
+/* 3 · El nombre se despliega desde el centro hacia los lados, enfocándose */
+.logo-intro .word{
+  position:relative;display:flex;font-family:var(--font-display);font-weight:600;
+  font-size:clamp(22px,7.6vw,38px);letter-spacing:.22em;padding-left:.22em; /* compensa el espacio tras la última letra */
+  color:var(--bone);text-transform:uppercase;
+}
+.logo-intro .word span{
+  opacity:0;filter:blur(8px);
+  transform:translate(calc(var(--k) * -.92em),.35em); /* nace en el centro */
+  animation:letterIn .8s var(--ease-out) calc(1.05s + var(--d) * 60ms) forwards,
+            letterShine .55s ease calc(1.85s + (var(--k) + 5.5) * 40ms) !important; /* !important: pisa los animation-delay en línea del HTML */
+}
+.logo-intro .word span.sp{display:none;} /* marca en una sola palabra: IMPERIOWATCH */
+.logo-intro .word span:nth-child(n+9){color:var(--gold-bright);} /* WATCH en dorado */
+/* IMPERIO nace dorado y se enfría hasta el color hueso */
+.logo-intro .word span:nth-child(-n+7){
+  animation:letterIn .8s var(--ease-out) calc(1.05s + var(--d) * 60ms) forwards,
+            letterCool .9s ease calc(1.3s + var(--d) * 60ms) both,
+            letterShine .55s ease calc(1.85s + (var(--k) + 5.5) * 40ms) !important;
+}
+.logo-intro .word span:nth-child(1){--k:-5.5;--d:5}.logo-intro .word span:nth-child(2){--k:-4.5;--d:4}
+.logo-intro .word span:nth-child(3){--k:-3.5;--d:3}.logo-intro .word span:nth-child(4){--k:-2.5;--d:2}
+.logo-intro .word span:nth-child(5){--k:-1.5;--d:1}.logo-intro .word span:nth-child(6){--k:-.5;--d:0}
+.logo-intro .word span:nth-child(7){--k:.5;--d:0}
+.logo-intro .word span:nth-child(9){--k:1.5;--d:1}.logo-intro .word span:nth-child(10){--k:2.5;--d:2}
+.logo-intro .word span:nth-child(11){--k:3.5;--d:3}.logo-intro .word span:nth-child(12){--k:4.5;--d:4}
+.logo-intro .word span:nth-child(13){--k:5.5;--d:5}
+@keyframes letterIn{to{opacity:1;filter:blur(0);transform:none;}}
+@keyframes letterCool{from{color:var(--gold-bright);}to{color:var(--bone);}}
+
+/* 4 · Destello: un brillo recorre las letras de izquierda a derecha */
+@keyframes letterShine{
+  0%,100%{text-shadow:0 0 0 rgba(255,226,160,0);}
+  45%{color:#fff7e3;text-shadow:0 0 16px rgba(255,226,160,.75);}
+}
+
+/* 5 · Ornamento: rombo dorado y línea que se abre desde él */
+.logo-intro::after{
+  content:"";position:absolute;left:50%;top:calc(100% + 17px);width:5px;height:5px;margin-left:-2.5px;
+  background:var(--gold-bright);box-shadow:0 0 10px rgba(227,193,132,.8);
+  opacity:0;transform:rotate(45deg) scale(.4);
+  animation:diamondIn .5s var(--ease-out) 1.65s forwards;
+}
+@keyframes diamondIn{to{opacity:1;transform:rotate(45deg) scale(1);}}
+.logo-intro .word::after{
+  content:"";position:absolute;left:12%;right:12%;bottom:-20px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold) 20%,var(--gold-bright) 50%,var(--gold) 80%,transparent);
+  filter:drop-shadow(0 0 6px rgba(198,161,91,.5));
+  transform:scaleX(0);transform-origin:center;
+  animation:wordLine .7s var(--ease-in-out) 1.75s forwards;
+}
+@keyframes wordLine{to{transform:scaleX(1);}}
+
 #preloader.hide .logo-intro{transition:opacity .4s ease;opacity:0;}
 #preloader.full-intro .pl-mark{display:none;}
 #preloader.quick .logo-intro{display:none;}
@@ -144,7 +213,8 @@ body > *:not(.ambient-bg):not(.grain):not(#preloader):not(header.site){position:
 
 body.page-leaving{animation:pageLeave .3s var(--ease-in-out) forwards;}
 @keyframes pageLeave{to{opacity:0;transform:translateY(-6px);}}
-body{animation:pageEnter .5s var(--ease-out) both;}
+/* backwards, no both: con forwards el body se queda con un transform animado y pasa a ser el bloque contenedor de los position:fixed (menú, asesor) */
+body{animation:pageEnter .5s var(--ease-out) backwards;}
 @keyframes pageEnter{from{opacity:0;transform:translateY(10px) scale(.99);}to{opacity:1;transform:none;}}
 
 /* ================================================
@@ -173,7 +243,9 @@ header.site{
 }
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:-0.01em;color:var(--bone);}
 .brand img{width:32px;height:32px;border-radius:9px;transition:transform .6s var(--ease-spring);}
-.brand:hover img{transform:rotate(8deg) scale(1.08);}
+@media (hover:hover) and (pointer:fine){
+  .brand:hover img{transform:rotate(8deg) scale(1.08);}
+}
 
 nav.main-links{display:flex;gap:6px;background:rgba(255,255,255,0.02);border-radius:999px;padding:4px;}
 nav.main-links a{
@@ -192,7 +264,10 @@ nav.main-links a::before{
 @media (hover:hover) and (pointer:fine){
   nav.main-links a:hover::before{opacity:1;transform:scale(1);}
 }
-nav.main-links a:hover, nav.main-links a.active{color:var(--gold-bright);}
+nav.main-links a.active{color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  nav.main-links a:hover{color:var(--gold-bright);}
+}
 nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198,161,91,0.16);}
 
 .nav-toggle{
@@ -200,7 +275,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
   width:38px;height:38px;padding:0;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;
   transition:border-color .3s ease, background .3s ease;
 }
-.nav-toggle:hover{border-color:var(--gold);background:rgba(198,161,91,0.08);}
+@media (hover:hover) and (pointer:fine){
+  .nav-toggle:hover{border-color:var(--gold);background:rgba(198,161,91,0.08);}
+}
 .nav-toggle .bar{width:16px;height:1.5px;background:var(--gold);transition:transform .4s var(--ease-spring), opacity .2s ease;}
 .nav-toggle.open .bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
 .nav-toggle.open .bar:nth-child(2){opacity:0;}
@@ -285,7 +362,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
   background:linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
   transform:skewX(-18deg);transition:left .65s ease;
 }
-.btn:hover::before{left:130%;}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover::before{left:130%;}
+}
 @media (hover:hover) and (pointer:fine){
   .btn:hover{background:var(--gold-bright);transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(198,161,91,0.5);}
 }
@@ -301,7 +380,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px;}
 .section-head h2{font-size:26px;}
 .section-head .see-all{font-size:12.5px;font-weight:500;color:var(--gold);border-bottom:1px solid transparent;transition:border-color .25s ease, color .25s ease;white-space:nowrap;}
-.section-head .see-all:hover{border-color:var(--gold);color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  .section-head .see-all:hover{border-color:var(--gold);color:var(--gold-bright);}
+}
 @media (max-width:480px){.section-head{flex-direction:column;align-items:flex-start;gap:6px;}}
 
 .filters{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:48px;}
@@ -372,7 +453,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 .card .cat{font-size:10px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;}
 .card h3{font-size:16.5px;font-weight:600;line-height:1.3;}
 .card h3 a{transition:color .3s ease;}
-.card:hover h3 a{color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  .card:hover h3 a{color:var(--gold-bright);}
+}
 .card .price{margin-top:auto;padding-top:10px;font-size:14.5px;color:var(--gold-bright);font-weight:500;}
 
 /* ================================================
@@ -406,7 +489,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 
 .product-view .details > *{opacity:0;transform:translateY(16px);animation:fadeUpMotion .7s var(--ease-out) forwards;}
 .product-view .details .crumb{display:inline-block;font-family:var(--font-display);font-size:13px;font-weight:500;color:var(--bone-dim);margin-bottom:16px;transition:color .25s;animation-delay:.06s;}
-.product-view .details .crumb:hover{color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  .product-view .details .crumb:hover{color:var(--gold-bright);}
+}
 .product-view .details .cat{font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:0;color:var(--gold);animation-delay:.14s;}
 .product-view .details h1{font-size:clamp(28px,3.4vw,38px);margin-top:12px;font-weight:700;animation-delay:.22s;}
 .product-view .details .price{font-family:var(--font-display);font-size:26px;font-weight:600;letter-spacing:-0.012em;font-variant-numeric:tabular-nums;color:var(--gold-bright);margin:20px 0;animation-delay:.3s;}
@@ -418,9 +503,11 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
   border:1px solid var(--glass-border);border-radius:999px;padding:9px 18px;font-family:var(--font-body);font-size:13.5px;font-weight:500;
   cursor:pointer;transition:all .25s var(--ease-out);
 }
-.opt-pills span:hover, .opt-pills span.sel{border-color:var(--gold);color:var(--gold-bright);background:rgba(198,161,91,0.08);}
+.opt-pills span.sel{border-color:var(--gold);color:var(--gold-bright);background:rgba(198,161,91,0.08);}
 .opt-pills span:active{transform:scale(.94);transition:transform 100ms ease-out;}
-@media (hover:hover) and (pointer:fine){.opt-pills span:hover{transform:translateY(-2px);}}
+@media (hover:hover) and (pointer:fine){
+  .opt-pills span:hover{border-color:var(--gold);color:var(--gold-bright);background:rgba(198,161,91,0.08);transform:translateY(-2px);}
+}
 .product-view .details .purchase-box{animation-delay:.54s;}
 @media (max-width:760px){.product-view{grid-template-columns:1fr;gap:36px;}}
 
@@ -482,7 +569,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
   font-size:12.5px;font-weight:500;color:var(--bone-dim);border:1px solid var(--glass-border);
   border-radius:999px;padding:10px 22px;transition:all .25s ease;
 }
-.contact-links a:hover{border-color:var(--gold);color:var(--gold-bright);}
+@media (hover:hover) and (pointer:fine){
+  .contact-links a:hover{border-color:var(--gold);color:var(--gold-bright);}
+}
 
 /* ================================================
    FAQ
@@ -513,7 +602,9 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 .purchase-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(198,161,91,.45);}
 .instagram-btn{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--gold);color:#0b0907;border-color:var(--gold);font-weight:700;}
 .instagram-btn span{font-size:16px;line-height:1;}
-.instagram-btn:hover{color:#0b0907;}
+@media (hover:hover) and (pointer:fine){
+  .instagram-btn:hover{color:#0b0907;}
+}
 
 .order-page{max-width:1180px;margin:0 auto;padding:30px 28px 100px;}
 .order-head{max-width:760px;margin-bottom:48px;}
@@ -546,7 +637,8 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 .form-help{margin:0;color:var(--bone-dim);font-size:11px;line-height:1.65;text-align:center;}
 .order-form .btn{width:100%;box-sizing:border-box;}
 .order-success{text-align:center;padding:20px 10px 8px;}
-.order-success[hidden]{display:none;}
+.order-form[hidden]{display:none;}
+.order-success{scroll-margin-top:90px;} /* para que la cabecera fija no lo tape */
 .success-icon{width:52px;height:52px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 22px;color:var(--gold-bright);font-size:22px;}
 .order-success h2{font-size:30px;margin:12px 0;}
 .order-success p{color:var(--bone-dim);line-height:1.8;font-size:13px;max-width:520px;margin:0 auto 24px;}
@@ -566,8 +658,10 @@ footer.site .f-logo{font-family:var(--font-display);font-weight:700;font-size:18
 footer.site .f-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;}
 footer.site .f-links a{position:relative;font-size:11px;letter-spacing:0.08em;color:var(--bone-dim);transition:color .25s;}
 footer.site .f-links a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--gold-bright);transition:width .3s ease;}
-footer.site .f-links a:hover{color:var(--gold-bright);}
-footer.site .f-links a:hover::after{width:100%;}
+@media (hover:hover) and (pointer:fine){
+  footer.site .f-links a:hover{color:var(--gold-bright);}
+  footer.site .f-links a:hover::after{width:100%;}
+}
 footer.site .copyright{font-size:10px;letter-spacing:0.06em;color:var(--bone-dim);opacity:0.55;}
 
 /* ================================================
@@ -918,3 +1012,103 @@ footer.site .copyright{
   .asesor-panel, .asesor-fila.nuevo, .asesor-burbuja.escribiendo i{animation:none;}
   .asesor-fab, .asesor-chip, .asesor-card, .asesor-icono{transition:none;}
 }
+
+/* ==================================================================
+   MÓVIL NATIVO — capa de plataforma (viewport, táctil, safe areas)
+   ================================================================== */
+
+/* Menú móvil: backdrop-filter en .nav-wrap lo convertía en el bloque contenedor del
+   nav position:fixed, así que el menú medía lo mismo que la barra (58px) en vez de
+   ocupar la pantalla, y además tapaba el botón de cerrar. En móvil la barra es
+   casi opaca, así que se quita el blur ahí y el overlay vuelve a ser de pantalla completa. */
+@media (max-width:860px){
+  .nav-wrap{
+    background:rgba(15,13,11,0.94);
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+    padding-top:calc(10px + env(safe-area-inset-top, 0px));
+  }
+  .brand, .nav-toggle{position:relative;z-index:41;} /* por encima del overlay abierto */
+  html:has(nav.main-links.open){overflow:hidden;}     /* el fondo no se desplaza con el menú abierto */
+  body:has(nav.main-links.open) #asesor-root{display:none;}
+}
+
+/* Tap sin retardo en todo lo pulsable */
+button, a, [role="button"], label, .opt-pills span{touch-action:manipulation;}
+
+/* El texto de un control no se selecciona con pulsación larga (el contenido sí) */
+button, .btn, .opt-pills span, nav.main-links a, .contact-links a{
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+}
+
+/* iOS hace zoom si un input tiene menos de 16px: se arregla el tamaño, no el zoom */
+@media (pointer:coarse){
+  .contact-wrap input, .contact-wrap textarea, .order-form input:not([type="checkbox"]){font-size:16px;}
+}
+
+/* Feedback al pulsar (sustituye al :hover en táctil) */
+.nav-toggle{transition:border-color .3s ease, background .3s ease, transform 100ms ease-out;}
+.nav-toggle:active{transform:scale(.92);}
+nav.main-links a:active, .faq-q:active, .section-head .see-all:active{color:var(--gold-bright);}
+.contact-links a:active{border-color:var(--gold);color:var(--gold-bright);}
+
+/* Safe areas */
+footer.site{padding-bottom:calc(30px + env(safe-area-inset-bottom, 0px));}
+.asesor-fab{right:calc(12px + env(safe-area-inset-right, 0px));}
+
+/* ==================================================================
+   CATÁLOGO: búsqueda, orden y "solo disponibles" · COMPARTIR
+   ================================================================== */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:860px;margin:0 auto 18px;}
+.toolbar .search{position:relative;flex:1 1 300px;min-width:0;display:block;}
+.toolbar .search svg{position:absolute;left:16px;top:50%;translate:0 -50%;width:16px;height:16px;color:var(--bone-dim);pointer-events:none;}
+.toolbar input[type="search"]{
+  width:100%;height:46px;padding:0 16px 0 42px;border-radius:999px;
+  background:var(--glass);border:1px solid var(--glass-border);color:var(--bone);
+  font:400 16px var(--font-body);outline:none;-webkit-appearance:none;appearance:none;
+  transition:border-color .3s ease, box-shadow .3s ease;
+}
+.toolbar input[type="search"]::placeholder{color:var(--bone-dim);}
+.toolbar input[type="search"]:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(198,161,91,0.08);}
+.toolbar select{
+  height:46px;padding:0 40px 0 18px;border-radius:999px;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+  background:var(--glass) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23c6a15b' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 16px center / 12px;
+  border:1px solid var(--glass-border);color:var(--bone);font:500 16px var(--font-body);
+  transition:border-color .3s ease;
+}
+.toolbar select:focus-visible{border-color:var(--gold);}
+.toolbar select option{background:var(--charcoal);color:var(--bone);}
+.toggle-disp{
+  height:46px;padding:0 20px;border-radius:999px;cursor:pointer;
+  background:var(--glass);border:1px solid var(--glass-border);color:var(--bone-dim);
+  font:500 14px var(--font-body);white-space:nowrap;
+  transition:background .25s var(--ease-out), border-color .25s ease, color .25s ease, transform .18s ease;
+}
+.toggle-disp:active{transform:scale(.95);transition:transform 100ms ease-out;}
+.toggle-disp[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--void);}
+@media (hover:hover) and (pointer:fine){
+  .toggle-disp:hover{border-color:var(--gold);color:var(--gold-bright);}
+  .toggle-disp[aria-pressed="true"]:hover{color:var(--void);}
+}
+@media (max-width:560px){
+  .toolbar .search{flex-basis:100%;}
+  .toolbar .sort{flex:1 1 0;min-width:0;}
+  .toolbar select{width:100%;}
+  .toggle-disp{flex:0 0 auto;}
+}
+
+.filters{margin-bottom:18px;}
+.result-count{text-align:center;font-size:13px;color:var(--bone-dim);margin:0 0 28px;min-height:1.3em;}
+
+/* al teclear/ordenar no se repite la entrada escalonada de las tarjetas */
+:where(.grid.sin-anim) .card{animation:none;opacity:1;translate:0 0;}
+
+.vacio{grid-column:1/-1;text-align:center;padding:56px 0 24px;color:var(--bone-dim);}
+.vacio p{margin-bottom:20px;font-size:15px;}
+
+/* ---------- ficha: compartir ---------- */
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.btn-row .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding-left:14px;padding-right:14px;text-align:center;}
+.btn-row .btn svg{width:16px;height:16px;flex:none;}
