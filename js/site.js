@@ -102,38 +102,113 @@ function renderDestacados(){
   initTiltAll();
 }
 
-// ---------- CATÁLOGO ----------
+// ---------- CATÁLOGO: búsqueda, categoría, orden y disponibilidad ----------
+// El estado vive en la URL (?q=&cat=&orden=&disp=1): se puede compartir una búsqueda
+// y al volver atrás desde una ficha el catálogo reaparece como se dejó.
 function renderCatalogo(){
   const grid = document.getElementById('grid-productos');
   const filtros = document.getElementById('filtros');
   if(!grid) return;
 
+  const buscar = document.getElementById('buscar');
+  const orden = document.getElementById('orden');
+  const soloDisp = document.getElementById('solo-disp');
+  const resultados = document.getElementById('resultados');
   const categorias = getCategorias();
 
-  // Construir botones de filtro
-  if(filtros){
-    let html = `<button class="active" data-cat="todos">Todos</button>`;
-    categorias.forEach(cat => {
-      html += `<button data-cat="${cat}">${cat}</button>`;
-    });
-    filtros.innerHTML = html;
+  // sin acentos y en minúsculas: "reloj" encuentra "Reloj", "cadena" encuentra "Cadena"
+  const norm = (t) => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const indice = new Map(PRODUCTOS.map(p => [p.id, norm([p.nombre, p.categoria, p.descripcion, (p.tallas || []).join(' ')].join(' '))]));
 
+  const qs = new URLSearchParams(window.location.search);
+  const estado = {
+    cat: categorias.includes(qs.get('cat')) ? qs.get('cat') : 'todos',
+    q: qs.get('q') || '',
+    orden: ['precio-asc', 'precio-desc'].includes(qs.get('orden')) ? qs.get('orden') : 'relevancia',
+    disp: qs.get('disp') === '1'
+  };
+
+  function filtrar(){
+    const tokens = norm(estado.q).split(/\s+/).filter(Boolean);
+    let lista = PRODUCTOS.filter(p =>
+      (estado.cat === 'todos' || p.categoria === estado.cat) &&
+      (!estado.disp || !estaAgotado(p)) &&
+      tokens.every(t => indice.get(p.id).includes(t))
+    );
+    if(estado.orden === 'precio-asc') lista = lista.slice().sort((a, b) => a.precio - b.precio);
+    if(estado.orden === 'precio-desc') lista = lista.slice().sort((a, b) => b.precio - a.precio);
+    return lista;
+  }
+
+  function guardarEnUrl(){
+    const p = new URLSearchParams();
+    if(estado.cat !== 'todos') p.set('cat', estado.cat);
+    if(estado.q.trim()) p.set('q', estado.q.trim());
+    if(estado.orden !== 'relevancia') p.set('orden', estado.orden);
+    if(estado.disp) p.set('disp', '1');
+    const str = p.toString();
+    try { history.replaceState(null, '', window.location.pathname + (str ? '?' + str : '')); } catch(e) {}
+  }
+
+  function sincronizarControles(){
+    if(buscar) buscar.value = estado.q;
+    if(orden) orden.value = estado.orden;
+    if(soloDisp){
+      soloDisp.setAttribute('aria-pressed', String(estado.disp));
+    }
+    if(filtros) filtros.querySelectorAll('button').forEach(b => b.classList.toggle('active', b.dataset.cat === estado.cat));
+  }
+
+  // animar=false al teclear u ordenar: que las tarjetas no parpadeen en cada pulsación
+  function pintar(animar){
+    const lista = filtrar();
+    grid.classList.toggle('sin-anim', !animar);
+    if(lista.length){
+      grid.innerHTML = lista.map(cardTemplate).join('');
+    } else {
+      grid.innerHTML = '<div class="vacio"><p>No hemos encontrado piezas con esos filtros.</p>' +
+        '<button type="button" class="btn outline" id="limpiar-filtros">Quitar filtros</button></div>';
+      grid.querySelector('#limpiar-filtros').addEventListener('click', () => {
+        estado.cat = 'todos'; estado.q = ''; estado.orden = 'relevancia'; estado.disp = false;
+        sincronizarControles(); pintar(true);
+      });
+    }
+    if(resultados) resultados.textContent = lista.length === 1 ? '1 pieza' : lista.length + ' piezas';
+    guardarEnUrl();
+    initTiltAll();
+  }
+
+  if(filtros){
+    let html = '<button data-cat="todos">Todos</button>';
+    categorias.forEach(cat => { html += '<button data-cat="' + cat + '">' + cat + '</button>'; });
+    filtros.innerHTML = html;
     filtros.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', () => {
-        filtros.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        pintarProductos(btn.dataset.cat);
+        estado.cat = btn.dataset.cat;
+        sincronizarControles();
+        pintar(true);
       });
     });
   }
 
-  function pintarProductos(cat){
-    const lista = cat === 'todos' ? PRODUCTOS : PRODUCTOS.filter(p => p.categoria === cat);
-    grid.innerHTML = lista.map(cardTemplate).join('');
-    initTiltAll();
+  if(buscar){
+    let t;
+    buscar.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(() => { estado.q = buscar.value; pintar(false); }, 120);
+    });
+    // "Buscar" en el teclado móvil: cierra el teclado para ver los resultados
+    buscar.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ e.preventDefault(); buscar.blur(); } });
   }
+  if(orden) orden.addEventListener('change', () => { estado.orden = orden.value; pintar(false); });
+  if(soloDisp) soloDisp.addEventListener('click', () => {
+    estado.disp = !estado.disp;
+    sincronizarControles();
+    pintar(false);
+  });
 
-  pintarProductos('todos');
+  sincronizarControles();
+  pintar(true);
 }
 
 // ---------- FICHA DE PRODUCTO ----------
@@ -170,7 +245,10 @@ function renderProducto(){
           <div class="purchase-note"><span class="purchase-dot"></span> Pedido gestionado por Instagram · Pago contra reembolso</div>
           <a class="btn instagram-btn" id="btn-instagram-pedido" href="#">Comprar por Instagram <span>↗</span></a>
         `}
-        <a class="btn outline" href="catalogo.html">← Volver al catálogo</a>
+        <div class="btn-row">
+          <button class="btn outline" type="button" id="btn-compartir" aria-live="polite"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12.5V3M6.5 6.5L10 3l3.5 3.5M4.5 10v6h11v-6"/></svg>Compartir</button>
+          <a class="btn outline" href="catalogo.html">← Catálogo</a>
+        </div>
       </div>
     </div>
   `;
@@ -198,6 +276,43 @@ function renderProducto(){
     });
   });
   actualizarInstagram();
+
+  // ---- Compartir: hoja nativa del móvil (Instagram, WhatsApp…) o copiar enlace ----
+  const shareBtn = cont.querySelector('#btn-compartir');
+  if(shareBtn){
+    const etiquetaOriginal = shareBtn.innerHTML;
+    const urlFicha = new URL('producto.html?id=' + encodeURIComponent(p.id), window.location.href).href;
+    const avisar = (texto) => {
+      shareBtn.textContent = texto;
+      setTimeout(() => { shareBtn.innerHTML = etiquetaOriginal; }, 2200);
+    };
+    const copiarEnlace = async () => {
+      try {
+        await navigator.clipboard.writeText(urlFicha);
+        return avisar('Enlace copiado ✓');
+      } catch(e) {}
+      try { // respaldo para navegadores sin Clipboard API
+        const ta = document.createElement('textarea');
+        ta.value = urlFicha; ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;font-size:16px;';
+        document.body.appendChild(ta); ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        avisar(ok ? 'Enlace copiado ✓' : 'No se pudo copiar');
+      } catch(e) { avisar('No se pudo copiar'); }
+    };
+    shareBtn.addEventListener('click', async () => {
+      if(navigator.share){
+        try {
+          await navigator.share({ title: p.nombre + ' — IMPERIOWATCH', text: p.nombre + ' · ' + formatPrecio(p.precio), url: urlFicha });
+        } catch(err) {
+          if(!err || err.name !== 'AbortError') copiarEnlace(); // cancelar la hoja no es un error
+        }
+        return;
+      }
+      copiarEnlace();
+    });
+  }
 
   // JSON-LD estructurado para buscadores
   const ld = document.createElement('script');

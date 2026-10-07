@@ -89,11 +89,28 @@
     <section class="page-head">
       <span class="eyebrow"><span class="dot"></span>CATÁLOGO</span>
       <h1>Toda la <em>colección</em>, en un solo lugar.</h1>
-      <p>Filtra por categoría y encuentra tu próximo complemento favorito.</p>
+      <p>Busca, filtra por categoría y ordena para encontrar tu próximo complemento favorito.</p>
     </section>
 
     <div class="container">
+      <div class="toolbar" id="toolbar" role="search">
+        <label class="search">
+          <span class="sr-only">Buscar en el catálogo</span>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L17 17"/></svg>
+          <input id="buscar" type="search" placeholder="Buscar reloj, color…" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="search" />
+        </label>
+        <label class="sort">
+          <span class="sr-only">Ordenar por</span>
+          <select id="orden">
+            <option value="relevancia">Destacados</option>
+            <option value="precio-asc">Menor precio</option>
+            <option value="precio-desc">Mayor precio</option>
+          </select>
+        </label>
+        <button type="button" class="toggle-disp" id="solo-disp" aria-pressed="false">Solo disponibles</button>
+      </div>
       <div class="filters" id="filtros"></div>
+      <p class="result-count" id="resultados" aria-live="polite"></p>
       <div class="grid" id="grid-productos"></div>
     </div>
 

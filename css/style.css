@@ -988,3 +988,61 @@ nav.main-links a:active, .faq-q:active, .section-head .see-all:active{color:var(
 /* Safe areas */
 footer.site{padding-bottom:calc(30px + env(safe-area-inset-bottom, 0px));}
 .asesor-fab{right:calc(12px + env(safe-area-inset-right, 0px));}
+
+/* ==================================================================
+   CATÁLOGO: búsqueda, orden y "solo disponibles" · COMPARTIR
+   ================================================================== */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:860px;margin:0 auto 18px;}
+.toolbar .search{position:relative;flex:1 1 300px;min-width:0;display:block;}
+.toolbar .search svg{position:absolute;left:16px;top:50%;translate:0 -50%;width:16px;height:16px;color:var(--bone-dim);pointer-events:none;}
+.toolbar input[type="search"]{
+  width:100%;height:46px;padding:0 16px 0 42px;border-radius:999px;
+  background:var(--glass);border:1px solid var(--glass-border);color:var(--bone);
+  font:400 16px var(--font-body);outline:none;-webkit-appearance:none;appearance:none;
+  transition:border-color .3s ease, box-shadow .3s ease;
+}
+.toolbar input[type="search"]::placeholder{color:var(--bone-dim);}
+.toolbar input[type="search"]:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(198,161,91,0.08);}
+.toolbar select{
+  height:46px;padding:0 40px 0 18px;border-radius:999px;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+  background:var(--glass) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23c6a15b' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 16px center / 12px;
+  border:1px solid var(--glass-border);color:var(--bone);font:500 16px var(--font-body);
+  transition:border-color .3s ease;
+}
+.toolbar select:focus-visible{border-color:var(--gold);}
+.toolbar select option{background:var(--charcoal);color:var(--bone);}
+.toggle-disp{
+  height:46px;padding:0 20px;border-radius:999px;cursor:pointer;
+  background:var(--glass);border:1px solid var(--glass-border);color:var(--bone-dim);
+  font:500 14px var(--font-body);white-space:nowrap;
+  transition:background .25s var(--ease-out), border-color .25s ease, color .25s ease, transform .18s ease;
+}
+.toggle-disp:active{transform:scale(.95);transition:transform 100ms ease-out;}
+.toggle-disp[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--void);}
+@media (hover:hover) and (pointer:fine){
+  .toggle-disp:hover{border-color:var(--gold);color:var(--gold-bright);}
+  .toggle-disp[aria-pressed="true"]:hover{color:var(--void);}
+}
+@media (max-width:560px){
+  .toolbar .search{flex-basis:100%;}
+  .toolbar .sort{flex:1 1 0;min-width:0;}
+  .toolbar select{width:100%;}
+  .toggle-disp{flex:0 0 auto;}
+}
+
+.filters{margin-bottom:18px;}
+.result-count{text-align:center;font-size:13px;color:var(--bone-dim);margin:0 0 28px;min-height:1.3em;}
+
+/* al teclear/ordenar no se repite la entrada escalonada de las tarjetas */
+:where(.grid.sin-anim) .card{animation:none;opacity:1;translate:0 0;}
+
+.vacio{grid-column:1/-1;text-align:center;padding:56px 0 24px;color:var(--bone-dim);}
+.vacio p{margin-bottom:20px;font-size:15px;}
+
+/* ---------- ficha: compartir ---------- */
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.btn-row .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding-left:14px;padding-right:14px;text-align:center;}
+.btn-row .btn svg{width:16px;height:16px;flex:none;}
