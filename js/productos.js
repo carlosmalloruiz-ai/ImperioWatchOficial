@@ -38,7 +38,7 @@ const PRODUCTOS = [
     nombre: "Rlx GMT-Master II Batman",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RolexBatman.png",
     descripcion: "Reloj de acero con esfera negra, bisel cerámico bidireccional en azul y negro, manecilla de segundo huso horario azul y brazalete metálico de tres eslabones oyster.",
     tallas: ["Talla única"]
@@ -211,7 +211,7 @@ const PRODUCTOS = [
     nombre: "RM 53-01 Tourbillon Pablo Mac Donough Zafiro con Correa Azul",
     categoria: "Relojes",
     precio: 59.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RichardTrasparenteGomaAzul.png",
     descripcion: "Reloj con caja transparente elaborada en cristal de zafiro, mecanismo tourbillon suspendido mediante cables de acero y correa de goma azul claro.",
     tallas: ["Talla única"]
@@ -221,7 +221,7 @@ const PRODUCTOS = [
     nombre: "RM 53-01 Tourbillon Pablo Mac Donough Zafiro con Correa Negra",
     categoria: "Relojes",
     precio: 59.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RichardTrasparenteGomaNegra.png",
     descripcion: "Reloj con caja totalmente transparente de cristal de zafiro, estructura interna esqueletizada con puentes y cables metálicos, y correa de goma negra.",
     tallas: ["Talla única"]
@@ -271,7 +271,7 @@ const PRODUCTOS = [
     nombre: "AP Royal Oak Cronógrafo Acero con Esfera Azul Celeste",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/ApPlateadoEferaCeleste.png",
     descripcion: "Reloj cronógrafo con caja y brazalete integrado de acero inoxidable, bisel octogonal cepillado y esfera Grande Tapisserie en tono azul celeste.",
     tallas: ["Talla única"]
@@ -331,7 +331,7 @@ const PRODUCTOS = [
     nombre: "Pack cinturon y cartera Hrms Plata",
     categoria: "Cinturones",
     precio: 44.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/hermesplata.jpeg",
     descripcion: "Conjunto compuesto por cinturón de piel negra con hebilla en acabado plateado, y billetera a juego con detalle metálico. Incluye bolsa de compra y caja original de la marca.",
     tallas: ["110 cm"]

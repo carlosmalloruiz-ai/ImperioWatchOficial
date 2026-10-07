@@ -123,22 +123,87 @@ body > *:not(.ambient-bg):not(.grain):not(#preloader):not(header.site){position:
 @keyframes plIn{to{opacity:1;transform:scale(1);}}
 @keyframes plPulse{0%,100%{filter:drop-shadow(0 0 6px rgba(198,161,91,0.25));}50%{filter:drop-shadow(0 0 22px rgba(198,161,91,0.55));}}
 
-.logo-intro{display:flex;flex-direction:column;align-items:center;gap:24px;}
-.logo-intro .ring-wrap{position:relative;width:108px;height:108px;display:flex;align-items:center;justify-content:center;}
+.logo-intro{position:relative;display:flex;align-items:center;justify-content:center;}
+
+/* 1 · Bisel: el anillo se dibuja y estalla hacia fuera como una onda */
+.logo-intro .ring-wrap{
+  position:absolute;left:50%;top:50%;width:108px;height:108px;margin:-54px 0 0 -54px;
+  display:flex;align-items:center;justify-content:center;pointer-events:none;
+  animation:ringBurst .9s var(--ease-out) 1s forwards;
+}
 .logo-intro svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
 .logo-intro .ring-bg{fill:none;stroke:var(--hairline);stroke-width:1;}
 .logo-intro .ring-draw{
   fill:none;stroke:var(--gold);stroke-width:1;stroke-linecap:round;
   stroke-dasharray:290;stroke-dashoffset:290;transform-origin:50% 50%;transform:rotate(-90deg);
-  animation:ringDraw 1.3s var(--ease-in-out) .15s forwards;
+  animation:ringDraw .9s var(--ease-in-out) .1s forwards;
   filter:drop-shadow(0 0 6px rgba(198,161,91,0.5));
 }
+.logo-intro .mono{display:none;} /* fuera la W */
 @keyframes ringDraw{to{stroke-dashoffset:0;}}
-.logo-intro .mono{font-family:var(--font-display);font-weight:700;font-size:32px;color:var(--gold-bright);opacity:0;letter-spacing:-0.02em;animation:monoIn .7s var(--ease-out) .9s forwards;}
-@keyframes monoIn{from{opacity:0;transform:scale(.6);}to{opacity:1;transform:scale(1);}}
-.logo-intro .word{display:flex;font-family:var(--font-display);font-weight:500;font-size:14px;letter-spacing:0.32em;color:var(--bone-dim);text-transform:uppercase;}
-.logo-intro .word span{opacity:0;transform:translateY(10px);animation:letterIn .5s ease forwards;}
-.logo-intro .word span.sp{width:8px;}
+@keyframes ringBurst{from{opacity:1;transform:scale(1);}to{opacity:0;transform:scale(2.8);}}
+
+/* 2 · Luz ambiente que se enciende detrás del nombre */
+#preloader.full-intro::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 18% at 50% 50%,rgba(198,161,91,.16),transparent 70%);
+  opacity:0;animation:plGlow 1.4s var(--ease-out) .9s forwards;
+}
+@keyframes plGlow{to{opacity:1;}}
+
+/* 3 · El nombre se despliega desde el centro hacia los lados, enfocándose */
+.logo-intro .word{
+  position:relative;display:flex;font-family:var(--font-display);font-weight:600;
+  font-size:clamp(22px,7.6vw,38px);letter-spacing:.22em;padding-left:.22em; /* compensa el espacio tras la última letra */
+  color:var(--bone);text-transform:uppercase;
+}
+.logo-intro .word span{
+  opacity:0;filter:blur(8px);
+  transform:translate(calc(var(--k) * -.92em),.35em); /* nace en el centro */
+  animation:letterIn .8s var(--ease-out) calc(1.05s + var(--d) * 60ms) forwards,
+            letterShine .55s ease calc(1.85s + (var(--k) + 5.5) * 40ms) !important; /* !important: pisa los animation-delay en línea del HTML */
+}
+.logo-intro .word span.sp{display:none;} /* marca en una sola palabra: IMPERIOWATCH */
+.logo-intro .word span:nth-child(n+9){color:var(--gold-bright);} /* WATCH en dorado */
+/* IMPERIO nace dorado y se enfría hasta el color hueso */
+.logo-intro .word span:nth-child(-n+7){
+  animation:letterIn .8s var(--ease-out) calc(1.05s + var(--d) * 60ms) forwards,
+            letterCool .9s ease calc(1.3s + var(--d) * 60ms) both,
+            letterShine .55s ease calc(1.85s + (var(--k) + 5.5) * 40ms) !important;
+}
+.logo-intro .word span:nth-child(1){--k:-5.5;--d:5}.logo-intro .word span:nth-child(2){--k:-4.5;--d:4}
+.logo-intro .word span:nth-child(3){--k:-3.5;--d:3}.logo-intro .word span:nth-child(4){--k:-2.5;--d:2}
+.logo-intro .word span:nth-child(5){--k:-1.5;--d:1}.logo-intro .word span:nth-child(6){--k:-.5;--d:0}
+.logo-intro .word span:nth-child(7){--k:.5;--d:0}
+.logo-intro .word span:nth-child(9){--k:1.5;--d:1}.logo-intro .word span:nth-child(10){--k:2.5;--d:2}
+.logo-intro .word span:nth-child(11){--k:3.5;--d:3}.logo-intro .word span:nth-child(12){--k:4.5;--d:4}
+.logo-intro .word span:nth-child(13){--k:5.5;--d:5}
+@keyframes letterIn{to{opacity:1;filter:blur(0);transform:none;}}
+@keyframes letterCool{from{color:var(--gold-bright);}to{color:var(--bone);}}
+
+/* 4 · Destello: un brillo recorre las letras de izquierda a derecha */
+@keyframes letterShine{
+  0%,100%{text-shadow:0 0 0 rgba(255,226,160,0);}
+  45%{color:#fff7e3;text-shadow:0 0 16px rgba(255,226,160,.75);}
+}
+
+/* 5 · Ornamento: rombo dorado y línea que se abre desde él */
+.logo-intro::after{
+  content:"";position:absolute;left:50%;top:calc(100% + 17px);width:5px;height:5px;margin-left:-2.5px;
+  background:var(--gold-bright);box-shadow:0 0 10px rgba(227,193,132,.8);
+  opacity:0;transform:rotate(45deg) scale(.4);
+  animation:diamondIn .5s var(--ease-out) 1.65s forwards;
+}
+@keyframes diamondIn{to{opacity:1;transform:rotate(45deg) scale(1);}}
+.logo-intro .word::after{
+  content:"";position:absolute;left:12%;right:12%;bottom:-20px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold) 20%,var(--gold-bright) 50%,var(--gold) 80%,transparent);
+  filter:drop-shadow(0 0 6px rgba(198,161,91,.5));
+  transform:scaleX(0);transform-origin:center;
+  animation:wordLine .7s var(--ease-in-out) 1.75s forwards;
+}
+@keyframes wordLine{to{transform:scaleX(1);}}
+
 #preloader.hide .logo-intro{transition:opacity .4s ease;opacity:0;}
 #preloader.full-intro .pl-mark{display:none;}
 #preloader.quick .logo-intro{display:none;}
@@ -572,7 +637,8 @@ nav.main-links a.active::before{opacity:1;transform:scale(1);background:rgba(198
 .form-help{margin:0;color:var(--bone-dim);font-size:11px;line-height:1.65;text-align:center;}
 .order-form .btn{width:100%;box-sizing:border-box;}
 .order-success{text-align:center;padding:20px 10px 8px;}
-.order-success[hidden]{display:none;}
+.order-form[hidden]{display:none;}
+.order-success{scroll-margin-top:90px;} /* para que la cabecera fija no lo tape */
 .success-icon{width:52px;height:52px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 22px;color:var(--gold-bright);font-size:22px;}
 .order-success h2{font-size:30px;margin:12px 0;}
 .order-success p{color:var(--bone-dim);line-height:1.8;font-size:13px;max-width:520px;margin:0 auto 24px;}
