@@ -9,6 +9,6 @@ binding = "AI"
 [vars]
 # Orígenes desde los que se permite usar el chat (separados por comas, sin barra final).
 # Para GitHub Pages es solo el dominio, sin la ruta del repositorio.
-ALLOWED_ORIGINS = "https://carlosmalloruiz-ai.github.io"
+ALLOWED_ORIGINS = "https://cmalloruiz0703.github.io"
 # Dirección pública del catálogo que genera scripts/generar-asesor.js
-CATALOGO_URL = "https://carlosmalloruiz-ai.github.io/ImperioWatchOficial/data/asesor.json"
+CATALOGO_URL = "https://cmalloruiz0703.github.io/ImperioWatchOficial/data/asesor.json"
