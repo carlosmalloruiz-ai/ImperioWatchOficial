@@ -1,6 +1,6 @@
 # IMPERIOWATCH
 
-Tienda web de relojes y packs de cinturón y cartera, de Córdoba (España). Los pedidos se cierran por Instagram.
+Tienda web de accesorios. Los pedidos se cierran por Instagram.
 
 Es una **web estática**: HTML, CSS y JavaScript puro, sin frameworks, sin base de datos y sin servidor propio. Lo único que no es estático es el **Asesor con IA**, que funciona con un pequeño worker de Cloudflare.
 
