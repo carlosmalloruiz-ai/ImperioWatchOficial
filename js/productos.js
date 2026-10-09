@@ -181,7 +181,7 @@ const PRODUCTOS = [
     nombre: "RM 35-02 Rafael Nadal Carbono NTPT con Correa Azul",
     categoria: "Relojes",
     precio: 59.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RichardGomaAzul.png",
     descripcion: "Reloj de acero con esfera negra, bisel cerámico giratorio dividido en azul y negro, manecilla GMT azul y brazalete de acero estilo Jubilee.",
     tallas: ["Talla única"]
@@ -251,7 +251,7 @@ const PRODUCTOS = [
     nombre: "AP Royal Oak Cronógrafo Cerámica Negra",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/ApFullBlack.png",
     descripcion: "Reloj cronógrafo fabricado integramente en cerámica negra mate cepillada, con esfera negra Grande Tapisserie, detalles y agujas en oro rosa, y brazalete de cerámica negra.",
     tallas: ["Talla única"]
@@ -321,7 +321,7 @@ const PRODUCTOS = [
     nombre: "Pack cinturon y cartera Hrms Dorado",
     categoria: "Cinturones",
     precio: 44.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/hermesdorado.jpeg",
     descripcion: "Conjunto compuesto por cinturón de piel negra con hebilla en acabado dorado, y billetera a juego con detalle metálico. Incluye bolsa de compra y caja original de la marca.",
     tallas: ["110 cm"]
@@ -341,7 +341,7 @@ const PRODUCTOS = [
     nombre: "Pack cinturon y cartera GC Negro",
     categoria: "Cinturones",
     precio: 44.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/guccinegro.jpeg",
     descripcion: "Conjunto compuesto por cinturón en tono gris con hebilla en acabado negro mate, y billetera a juego. Incluye bolsa de compra y caja original de la marca.",
     tallas: ["110 cm"]
@@ -351,7 +351,7 @@ const PRODUCTOS = [
     nombre: "Pack cinturon y cartera GC Verde y Negro",
     categoria: "Cinturones",
     precio: 44.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/gucciverdenegro.jpeg",
     descripcion: "Conjunto compuesto por cinturón en piel negra con detalle tricolor en la hebilla, y billetera a juego con franja verde y roja. Incluye bolsa de compra y caja original de la marca.",
     tallas: ["110 cm"]
