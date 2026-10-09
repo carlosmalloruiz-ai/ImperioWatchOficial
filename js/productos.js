@@ -68,7 +68,7 @@ const PRODUCTOS = [
     nombre: "Rlx Cosmograph Daytona Oro Amarillo con Esfera Azul Celeste",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RolexDaytonaDoradoAzulCierreGoma.png",
     descripcion: "Reloj cronógrafo con caja de oro amarillo, bisel cerámico negro Tachymetre, esfera azul claro con subesferas negras en contraste y correa de goma negra Oysterflex.",
     tallas: ["Talla única"]
@@ -78,7 +78,7 @@ const PRODUCTOS = [
     nombre: "Rlx Cosmograph Daytona Oro Amarillo / Dorado",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RolexDaytonaDoradoCierreGoma.png",
     descripcion: "Reloj cronógrafo con caja en oro amarillo, bisel cerámico negro Tachymetre, esfera en tono dorado con subesferas negras y correa de goma negra Oysterflex.",
     tallas: ["Talla única"]
@@ -88,7 +88,7 @@ const PRODUCTOS = [
     nombre: "Rlx Cosmograph Daytona Acero Esfera Plata",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RolexDaytonaCierreGoma.png",
     descripcion: "Reloj cronógrafo con caja de acero/oro blanco, bisel cerámico negro Tachymetre, esfera en tono gris/plateado con subesferas negras y correa de goma negra Oysterflex.",
     tallas: ["Talla única"]
@@ -98,7 +98,7 @@ const PRODUCTOS = [
     nombre: "Rlx Yacht Master Oro Amarillo con Correa Oysterflex",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RolexDoradoCierreGoma.png",
     descripcion: "Reloj deportivo con caja en oro amarillo, bisel cerámico negro mate con números en relieve, esfera negra con texto en rojo y correa de goma negra Oysterflex.",
     tallas: ["Talla única"]
@@ -148,7 +148,7 @@ const PRODUCTOS = [
     nombre: "Crtr Santos de Cartier Acero con Esfera Azul Degradada",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/CartierSantosAzul.png",
     descripcion: "Reloj de acero con caja cuadrada, esfera azul degradada con números romanos, ventana de fecha, brazalete de acero con tornillos vistos y corona con cabujón azul.",
     tallas: ["Talla única"]
@@ -158,7 +158,7 @@ const PRODUCTOS = [
     nombre: "Crtr Santos de Cartier Acero con Esfera Blanca",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/CartierSantosBlanco.png",
     descripcion: "Reloj automático de acero con bisel satinado, esfera blanca plateada con números romanos negros, ventana de fecha, brazalete de acero con tornillos vistos y corona con cabujón azul.",
     tallas: ["Talla única"]
@@ -241,7 +241,7 @@ const PRODUCTOS = [
     nombre: "AP Royal Oak Cronógrafo Oro Amarillo",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/ApDorado.png",
     descripcion: "Reloj cronógrafo con caja y brazalete integrado en oro amarillo, bisel octogonal con tornillos expuestos y esfera monogramada con patrón Grande Tapisserie en tono dorado con subesferas a juego.",
     tallas: ["Talla única"]
