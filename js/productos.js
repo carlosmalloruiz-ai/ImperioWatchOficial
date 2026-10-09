@@ -98,7 +98,7 @@ const PRODUCTOS = [
     nombre: "Rlx Yacht Master Oro Amarillo con Correa Oysterflex",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "agotado",
+    estado: "disponible",
     imagen: "assets/productos/RolexDoradoCierreGoma.png",
     descripcion: "Reloj deportivo con caja en oro amarillo, bisel cerámico negro mate con números en relieve, esfera negra con texto en rojo y correa de goma negra Oysterflex.",
     tallas: ["Talla única"]
