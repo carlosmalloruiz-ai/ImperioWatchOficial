@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-09T21:46:39.697Z",
+ "generado": "2026-10-09T21:50:45.207Z",
  "productos": [
   {
    "id": "rolex-batgirl",
@@ -173,7 +173,7 @@
    "nombre": "Rlx Yacht Master Oro Amarillo con Correa Oysterflex",
    "categoria": "Relojes",
    "precio": 49.99,
-   "estado": "agotado",
+   "estado": "disponible",
    "imagen": "assets/productos/RolexDoradoCierreGoma.png",
    "descripcion": "Reloj deportivo con caja en oro amarillo, bisel cerámico negro mate con números en relieve, esfera negra con texto en rojo y correa de goma negra Oysterflex.",
    "tags": {
