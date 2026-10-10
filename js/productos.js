@@ -29,7 +29,7 @@ const PRODUCTOS = [
     categoria: "Relojes",
     precio: 49.99,
     estado: "disponible",
-    imagen: "assets/productos/RolexOroRosa.png",
+    imagen: "assets/productos/RolexOro.png",
     descripcion: "Reloj con caja y brazalete de tres eslabones oyster fabricados en oro.",
     tallas: ["Talla única"]
   },
@@ -261,7 +261,7 @@ const PRODUCTOS = [
     nombre: "AP Royal Oak Cronógrafo Oro Rosa",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/ApOroRosa.png",
     descripcion: "Reloj cronógrafo con caja y brazalete en oro rosa, bisel octogonal característico y esfera Grande Tapisserie en tono marrón rosa con subesferas a juego.",
     tallas: ["Talla única"]
