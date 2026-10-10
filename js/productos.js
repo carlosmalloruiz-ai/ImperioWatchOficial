@@ -201,7 +201,7 @@ const PRODUCTOS = [
     nombre: "RM 35-02 Rafael Nadal Carbono NTPT con Correa Negra",
     categoria: "Relojes",
     precio: 59.99,
-    estado: "agota",
+    estado: "agotado",
     imagen: "assets/productos/RichardGomaNegra.png",
     descripcion: "Reloj de alta gama con caja de carbono NTPT veteada en tono negro/móvil, realce interior en azul cyan, movimiento automático esqueletizado y correa de goma negra.",
     tallas: ["Talla única"]
