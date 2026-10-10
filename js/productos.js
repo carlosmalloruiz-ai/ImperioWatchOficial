@@ -25,12 +25,12 @@ const PRODUCTOS = [
   },
   {
     id: "rolex-rootbeer",
-    nombre: "Rlx GMT-Master II Oro Rosa",
+    nombre: "Rlx GMT-Master II Oro",
     categoria: "Relojes",
     precio: 49.99,
     estado: "disponible",
     imagen: "assets/productos/RolexOroRosa.png",
-    descripcion: "Reloj con caja y brazalete de tres eslabones oyster fabricados en oro rosa. Presenta una esfera negra y bisel cerámico bicolor en negro y marrón.",
+    descripcion: "Reloj con caja y brazalete de tres eslabones oyster fabricados en oro.",
     tallas: ["Talla única"]
   },
   {
@@ -48,7 +48,7 @@ const PRODUCTOS = [
     nombre: "Rlx Yacht Master Oro Rosa con Correa Oysterflex",
     categoria: "Relojes",
     precio: 49.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RolexOroRosaCierreGoma.png",
     descripcion: "Reloj con caja en oro rosa, esfera negra mate con el detalle Yacht-Master en rojo, bisel cerámico negro con relieve y correa de goma negro Oysterflex.",
     tallas: ["Talla única"]
@@ -191,7 +191,7 @@ const PRODUCTOS = [
     nombre: "RM 35-02 Rafael Nadal Cerámica Blanca con Correa Blanca",
     categoria: "Relojes",
     precio: 59.99,
-    estado: "disponible",
+    estado: "agotado",
     imagen: "assets/productos/RichardGomaBlanca.png",
     descripcion: "Reloj deportivo con caja de cerámica blanca, bisel interior azul claro, mecanismo totalmente esqueletizado visible y correa de goma blanca.",
     tallas: ["Talla única"]
@@ -201,7 +201,7 @@ const PRODUCTOS = [
     nombre: "RM 35-02 Rafael Nadal Carbono NTPT con Correa Negra",
     categoria: "Relojes",
     precio: 59.99,
-    estado: "disponible",
+    estado: "agota",
     imagen: "assets/productos/RichardGomaNegra.png",
     descripcion: "Reloj de alta gama con caja de carbono NTPT veteada en tono negro/móvil, realce interior en azul cyan, movimiento automático esqueletizado y correa de goma negra.",
     tallas: ["Talla única"]
@@ -230,7 +230,7 @@ const PRODUCTOS = [
     id: "richard-mille-rm-11-03-amarillo",
     nombre: "RM 11-03 Flyback Cerámica Blanca con Correa Amarilla",
     categoria: "Relojes",
-    precio: 59.99,
+    precio: 54.99,
     estado: "disponible",
     imagen: "assets/productos/RichardBlancoAmarillo.png",
     descripcion: "Reloj cronógrafo con caja tonneau en cerámica blanca, esfera esqueleto con detalles amarillos, indicador de fecha grande, pulsadores blancos y correa de goma amarilla.",
