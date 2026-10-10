@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-10T11:55:43.325Z",
+ "generado": "2026-10-10T16:43:21.560Z",
  "productos": [
   {
    "id": "rolex-batgirl",
@@ -29,7 +29,7 @@
    "categoria": "Relojes",
    "precio": 49.99,
    "estado": "disponible",
-   "imagen": "assets/productos/RolexOroRosa.png",
+   "imagen": "assets/productos/RolexOro.png",
    "descripcion": "Reloj con caja y brazalete de tres eslabones oyster fabricados en oro.",
    "tags": {
     "tipo": "reloj",
@@ -499,7 +499,7 @@
    "nombre": "AP Royal Oak Cronógrafo Oro Rosa",
    "categoria": "Relojes",
    "precio": 49.99,
-   "estado": "disponible",
+   "estado": "agotado",
    "imagen": "assets/productos/ApOroRosa.png",
    "descripcion": "Reloj cronógrafo con caja y brazalete en oro rosa, bisel octogonal característico y esfera Grande Tapisserie en tono marrón rosa con subesferas a juego.",
    "tags": {
